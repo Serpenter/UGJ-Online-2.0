@@ -18,10 +18,17 @@ config/icon="res://icon.png"
 
 GSceneManager="*res://global_scripts/GSceneManager.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+window/stretch/shrink=2.0
+
 [physics]
 
 common/enable_pause_aware_picking=true
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 environment/default_environment="res://default_env.tres"
