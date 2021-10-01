@@ -6,6 +6,7 @@
 extents = Vector2( 33.9533, 12.0672 )
 
 [node name="FlowerBox" type="Sprite"]
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 303, 384, 69, 48 )
