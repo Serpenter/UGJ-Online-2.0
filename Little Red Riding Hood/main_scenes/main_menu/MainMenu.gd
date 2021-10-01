@@ -18,3 +18,7 @@ func _ready():
 
 func _on_Button_pressed():
     GSceneManager.goto_scene_wloader("res://main_scenes/world/World.tscn")
+
+
+func _on_Button2_pressed():
+    GSceneManager.goto_scene_wloader("res://test_scenes/TestTileWorld.tscn")
