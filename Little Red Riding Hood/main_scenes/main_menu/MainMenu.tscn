@@ -23,19 +23,26 @@ margin_right = 1004.0
 margin_bottom = 580.0
 
 [node name="Spacer1" type="Control" parent="CanvasLayer/MarginContainer/HBoxContainer"]
-margin_right = 462.0
+margin_right = 440.0
 margin_bottom = 580.0
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer"]
-margin_left = 466.0
-margin_right = 538.0
+margin_left = 444.0
+margin_right = 516.0
 margin_bottom = 580.0
 grow_vertical = 2
 text = "Press me"
 
+[node name="Button2" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+margin_left = 520.0
+margin_right = 559.0
+margin_bottom = 580.0
+grow_vertical = 2
+text = "Test"
+
 [node name="Spacer2" type="Control" parent="CanvasLayer/MarginContainer/HBoxContainer"]
-margin_left = 542.0
+margin_left = 563.0
 margin_right = 1004.0
 margin_bottom = 580.0
 size_flags_horizontal = 3
@@ -44,3 +51,4 @@ __meta__ = {
 }
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/Button2" to="." method="_on_Button2_pressed"]
