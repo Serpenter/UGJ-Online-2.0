@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://test_scenes/TestTileBlock_01.tscn" type="PackedScene" id=1]
+[ext_resource path="res://prefabs/placeholder_char/PlaceholderChar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://test_scenes/TestTileBlock_02.tscn" type="PackedScene" id=3]
+[ext_resource path="res://test_scenes/TestTileBlock_03.tscn" type="PackedScene" id=4]
+
+[node name="TestWorld" type="Node2D"]
+
+[node name="GameObjects" type="YSort" parent="."]
+
+[node name="Char" parent="GameObjects" instance=ExtResource( 2 )]
+position = Vector2( 238.11, 145.247 )
+
+[node name="Camera2D" type="Camera2D" parent="GameObjects/Char"]
+position = Vector2( 0.396851, 0 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+smoothing_enabled = true
+drag_margin_left = 0.08
+drag_margin_top = 0.08
+drag_margin_right = 0.08
+drag_margin_bottom = 0.08
+
+[node name="Blocks" type="YSort" parent="GameObjects"]
+
+[node name="TestTileBlock_01" parent="GameObjects/Blocks" instance=ExtResource( 1 )]
+position = Vector2( 0, 384 )
+
+[node name="TestTileBlock_02" parent="GameObjects/Blocks" instance=ExtResource( 3 )]
+
+[node name="TestTileBlock_03" parent="GameObjects/Blocks" instance=ExtResource( 4 )]
+position = Vector2( 832, 0 )
+
+[node name="TestTileBlock_04" parent="GameObjects/Blocks" instance=ExtResource( 3 )]
+position = Vector2( 832, 384 )
