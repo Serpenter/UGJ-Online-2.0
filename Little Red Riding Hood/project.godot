@@ -22,7 +22,7 @@ GSceneManager="*res://global_scripts/GSceneManager.gd"
 
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
-window/stretch/shrink=2.0
+window/stretch/shrink=1.5
 
 [physics]
 
