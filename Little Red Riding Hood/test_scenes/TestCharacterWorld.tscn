@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://main_scenes/world/tile_assets/TestTileWorld.tres" type="TileSet" id=1]
 [ext_resource path="res://prefabs/trees/TreeLeaf.tscn" type="PackedScene" id=2]
+[ext_resource path="res://prefabs/characters/TestEnemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://prefabs/characters/LRRH.tscn" type="PackedScene" id=4]
+[ext_resource path="res://prefabs/particles/ParticleManager.gd" type="Script" id=5]
 
 [node name="TestTileWorld" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="." groups=[
+"ParticleManager",
+]]
+script = ExtResource( 5 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -18,13 +25,15 @@ tile_data = PoolIntArray( 21, 0, 131072, 22, 0, 131073, 23, 0, 131073, 24, 0, 13
 
 [node name="GameObjects" type="YSort" parent="."]
 
+[node name="Character2" parent="GameObjects" instance=ExtResource( 3 )]
+position = Vector2( 1076.85, 167.668 )
+
 [node name="Character" parent="GameObjects" instance=ExtResource( 4 )]
 position = Vector2( 523.85, 298.264 )
 MOTION_SPEED = 7500
 
 [node name="Camera2D" type="Camera2D" parent="GameObjects/Character"]
 current = true
-zoom = Vector2( 0.5, 0.5 )
 smoothing_enabled = true
 drag_margin_left = 0.08
 drag_margin_top = 0.08
