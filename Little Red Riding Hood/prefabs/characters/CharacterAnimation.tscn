@@ -1,8 +1,9 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=85 format=2]
 
 [ext_resource path="res://prefabs/characters/CharacterAnimation.gd" type="Script" id=1]
-[ext_resource path="res://prefabs/characters/character_sprites/lrrh_saber_regular.png" type="Texture" id=2]
-[ext_resource path="res://prefabs/characters/character_sprites/lrrh_saber_adv_slash.png" type="Texture" id=3]
+[ext_resource path="res://prefabs/characters/character_sprites/lrrh_rapier_regular.png" type="Texture" id=2]
+[ext_resource path="res://prefabs/characters/character_sprites/lrrh_rapier_advanced.png" type="Texture" id=3]
+[ext_resource path="res://prefabs/characters/AttackZone.gd" type="Script" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "BowDown"
@@ -400,6 +401,30 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("AttackZone/AttackZoneDown:can_damage")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AttackZone/DamageZoneDown:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=11]
 resource_name = "SlashAdvLeft"
@@ -439,6 +464,30 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AttackZone/AttackZoneLeft:can_damage")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AttackZone/DamageZoneLeft:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -480,6 +529,30 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("AttackZone/AttackZoneRight:can_damage")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AttackZone/DamageZoneRight:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=13]
 resource_name = "SlashAdvUp"
@@ -520,10 +593,34 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("AttackZone/AttackZoneUp:can_damage")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AttackZone/DamageZoneUp:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=14]
 resource_name = "SlashRegularDown"
-length = 0.3
+length = 0.6
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame_coords")
@@ -532,7 +629,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 14 ), Vector2( 1, 14 ), Vector2( 2, 14 ), Vector2( 3, 14 ), Vector2( 4, 14 ), Vector2( 5, 14 ) ]
@@ -563,7 +660,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=15]
-length = 0.3
+length = 0.6
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame_coords")
@@ -572,7 +669,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 13 ), Vector2( 1, 13 ), Vector2( 2, 13 ), Vector2( 3, 13 ), Vector2( 4, 13 ), Vector2( 5, 13 ) ]
@@ -604,7 +701,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=16]
 resource_name = "SlashRegularRight"
-length = 0.3
+length = 0.6
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame_coords")
@@ -613,7 +710,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 15 ), Vector2( 1, 15 ), Vector2( 2, 15 ), Vector2( 3, 15 ), Vector2( 4, 15 ), Vector2( 5, 15 ) ]
@@ -644,7 +741,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=17]
-length = 0.3
+length = 0.6
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame_coords")
@@ -653,7 +750,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 12 ), Vector2( 1, 12 ), Vector2( 2, 12 ), Vector2( 3, 12 ), Vector2( 4, 12 ), Vector2( 5, 12 ) ]
@@ -1344,22 +1441,38 @@ graph_offset = Vector2( 10, 4.66516 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=75]
 
+[sub_resource type="RectangleShape2D" id=77]
+extents = Vector2( 20.6231, 9.07853 )
+
+[sub_resource type="RectangleShape2D" id=78]
+extents = Vector2( 18.6922, 10 )
+
+[sub_resource type="RectangleShape2D" id=79]
+extents = Vector2( 16.6544, 10 )
+
+[sub_resource type="RectangleShape2D" id=80]
+extents = Vector2( 17.1574, 10 )
+
+[sub_resource type="RectangleShape2D" id=76]
+extents = Vector2( 36.8647, 12.8273 )
+
 [node name="CharacterAnimation" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 2 )
 offset = Vector2( 0, -30 )
 hframes = 13
 vframes = 21
-frame = 169
+frame = 185
 
 [node name="AdvSlashSprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 offset = Vector2( 0, -30 )
 hframes = 8
 vframes = 4
-frame = 21
+frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/BowDown = SubResource( 1 )
@@ -1397,3 +1510,85 @@ tree_root = SubResource( 74 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 75 )
+
+[node name="AttackZone" type="Node2D" parent="."]
+
+[node name="AttackZoneUp" type="Area2D" parent="AttackZone"]
+visible = false
+monitorable = false
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/AttackZoneUp"]
+position = Vector2( 1.18921, -45.5135 )
+shape = SubResource( 77 )
+
+[node name="AttackZoneDown" type="Area2D" parent="AttackZone"]
+visible = false
+monitorable = false
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/AttackZoneDown"]
+position = Vector2( 1.93095, -5.13582 )
+shape = SubResource( 78 )
+
+[node name="AttackZoneRight" type="Area2D" parent="AttackZone"]
+visible = false
+monitorable = false
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/AttackZoneRight"]
+position = Vector2( 34.8881, -25.4683 )
+shape = SubResource( 79 )
+
+[node name="AttackZoneLeft" type="Area2D" parent="AttackZone"]
+visible = false
+monitoring = false
+monitorable = false
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/AttackZoneLeft"]
+position = Vector2( -31.9131, -25.3201 )
+shape = SubResource( 80 )
+
+[node name="DamageZoneUp" type="Area2D" parent="AttackZone"]
+visible = false
+monitoring = false
+monitorable = false
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/DamageZoneUp"]
+position = Vector2( 0, -47 )
+shape = SubResource( 76 )
+
+[node name="DamageZoneDown" type="Area2D" parent="AttackZone"]
+visible = false
+monitoring = false
+monitorable = false
+script = ExtResource( 4 )
+can_damage = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/DamageZoneDown"]
+position = Vector2( 1.33635, 1.99943 )
+shape = SubResource( 76 )
+
+[node name="DamageZoneRight" type="Area2D" parent="AttackZone"]
+visible = false
+monitoring = false
+monitorable = false
+script = ExtResource( 4 )
+can_damage = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/DamageZoneRight"]
+position = Vector2( 39.645, -26.9548 )
+shape = SubResource( 76 )
+
+[node name="DamageZoneLeft" type="Area2D" parent="AttackZone"]
+visible = false
+monitoring = false
+monitorable = false
+script = ExtResource( 4 )
+can_damage = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/DamageZoneLeft"]
+position = Vector2( -41.4268, -26.5093 )
+shape = SubResource( 76 )
