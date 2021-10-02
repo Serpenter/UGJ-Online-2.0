@@ -1,27 +1,31 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://prefabs/characters/grey_10x100.png" type="Texture" id=1]
-[ext_resource path="res://prefabs/characters/whitish_10x100.png" type="Texture" id=2]
-[ext_resource path="res://prefabs/characters/red_10x100.png" type="Texture" id=3]
+[ext_resource path="res://prefabs/characters/white_5x50.png" type="Texture" id=1]
+[ext_resource path="res://prefabs/characters/Healthbar.gd" type="Script" id=2]
 
-[node name="Node2D" type="Control"]
+[node name="HealthBar" type="Control"]
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureOver" type="TextureProgress" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-texture_progress = ExtResource( 3 )
+margin_right = 50.0
+margin_bottom = 5.0
+texture_progress = ExtResource( 1 )
+tint_progress = Color( 0.917647, 0.0588235, 0.0588235, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureUnder" type="TextureProgress" parent="."]
-margin_right = 100.0
-margin_bottom = 11.0
+margin_right = 50.0
+margin_bottom = 5.0
 texture_under = ExtResource( 1 )
-texture_progress = ExtResource( 2 )
+texture_progress = ExtResource( 1 )
+tint_under = Color( 0.105882, 0.101961, 0.101961, 0.392157 )
+tint_over = Color( 1, 1, 1, 0 )
+tint_progress = Color( 0.678431, 0.678431, 0.678431, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

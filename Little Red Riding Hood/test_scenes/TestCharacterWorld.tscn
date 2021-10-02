@@ -2,7 +2,7 @@
 
 [ext_resource path="res://main_scenes/world/tile_assets/TestTileWorld.tres" type="TileSet" id=1]
 [ext_resource path="res://prefabs/trees/TreeLeaf.tscn" type="PackedScene" id=2]
-[ext_resource path="res://prefabs/characters/TestEnemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://prefabs/characters/TestEnemy02.tscn" type="PackedScene" id=3]
 [ext_resource path="res://prefabs/characters/LRRH.tscn" type="PackedScene" id=4]
 [ext_resource path="res://prefabs/particles/ParticleManager.gd" type="Script" id=5]
 [ext_resource path="res://prefabs/animals/BirdWhiteCrest.tscn" type="PackedScene" id=6]
@@ -53,9 +53,6 @@ position = Vector2( 702.018, 166.763 )
 [node name="Bird9" parent="GameObjects" instance=ExtResource( 6 )]
 position = Vector2( 1057.49, 130.236 )
 
-[node name="Character2" parent="GameObjects" instance=ExtResource( 3 )]
-position = Vector2( 1076.85, 167.668 )
-
 [node name="Character" parent="GameObjects" instance=ExtResource( 4 )]
 position = Vector2( 523.85, 298.264 )
 MOTION_SPEED = 7500
@@ -73,3 +70,6 @@ position = Vector2( 578.425, 249.606 )
 
 [node name="TreeLeaf" parent="GameObjects" instance=ExtResource( 2 )]
 position = Vector2( 190.931, 247.484 )
+
+[node name="Character2" parent="GameObjects" instance=ExtResource( 3 )]
+position = Vector2( 1084.21, 137.363 )

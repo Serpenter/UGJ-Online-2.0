@@ -71,6 +71,7 @@ onready var damage_zone_down = $Animations/CharacterAnimation/AttackZone/DamageZ
 onready var damage_zone_left = $Animations/CharacterAnimation/AttackZone/DamageZoneLeft
 onready var damage_zone_right = $Animations/CharacterAnimation/AttackZone/DamageZoneRight
 
+onready var enemy_check_area = $EnemyCheckArea
 
 var char_control = CHARACTER_CONTROL.PLAYER
 var use_mouse_look_dir = false
@@ -79,10 +80,15 @@ export var current_state = CHARACTER_STATE.IDLE
 var motion = Vector2()
 var look_dir = Vector2()
 
-export var health = 10
+signal health_changed
+signal max_health_changed
+export var health = 50
 export var health_max = 100
+export var healing_speed = 10
 
 var target = null
+var is_player = false
+var is_enemy_near = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -91,9 +97,25 @@ func _ready():
     damage_zone_left.connect("area_entered", self, "_on_damage_zone_entered")
     damage_zone_right.connect("area_entered", self, "_on_damage_zone_entered")
     
-    if char_control == CHARACTER_CONTROL.PLAYER:
+    enemy_check_area.connect("area_entered", self, "_on_enemy_check_area_entered")
+    
+    emit_signal("health_changed", health)
+    emit_signal("max_health_changed", health_max)
+    
+    is_player = is_in_group("player")
+    
+    if is_player:
+        char_control == CHARACTER_CONTROL.PLAYER
         enemy_teams = [CHARACTER_TEAM.ENEMY]
 
+func resolve_healing(delta):
+    if not is_player:
+        return
+        
+    if is_enemy_near or health == health_max:
+        return
+    
+    heal(delta * healing_speed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -101,6 +123,14 @@ func _process(delta):
     process_player_input(delta)
     update_look_dir()
     resolve_movement_animation()
+    resolve_healing(delta)
+    
+
+func set_max_health(new_max_health):
+    health_max = new_max_health
+    health = min(health, health_max)
+    emit_signal("health_changed", health)
+    emit_signal("max_health_changed", health_max)
     
 
 func reset_attack_zone_monitoring():
@@ -120,6 +150,7 @@ func heal(added_health):
         return
     health += added_health
     health = min(health, health_max)
+    emit_signal("health_changed", health)
     
 func receive_damage(damage):
     if current_state == CHARACTER_STATE.DEAD:
@@ -128,6 +159,7 @@ func receive_damage(damage):
     blood_position.y -= 20
     get_tree().call_group("ParticleManager", "spawn_particle", "blood", blood_position)
     health -= damage
+    emit_signal("health_changed", health)
     
     if health <= 0:
         die()
@@ -167,8 +199,8 @@ func idle_animation_check():
     if not current_state in non_interactive_states:
         return
     if current_state == CHARACTER_STATE.DEAD:
-        if not is_in_group("player") and animation.player.get_current_animation().empty():
-            queue_free()
+#        if not is_in_group("player") and animation.player.get_current_animation().empty():
+#            queue_free()
         return
         
     reset_attack_zone_monitoring()
@@ -264,3 +296,21 @@ func process_player_input(_delta):
         
     if Input.is_action_pressed("attack") and can_attack:
         begin_attack()
+
+func _on_enemy_check_area_entered(area):
+    if area.is_in_group("character_area"):
+        var owner = area.get_owner()
+
+        if( owner.has_method("get_team") 
+        and owner.get_team() in enemy_teams
+        and owner.has_method("receive_damage") ):
+            is_enemy_near = true
+
+func _on_Timer_timeout():
+    if not is_player:
+        return
+        
+    is_enemy_near = false
+    enemy_check_area.monitoring = false
+    enemy_check_area.monitoring = true
+    
