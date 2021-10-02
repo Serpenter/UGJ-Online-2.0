@@ -1,4 +1,4 @@
-extends Node2D
+extends "res://main_scenes/world_chunks/TileBlock.gd"
 
 
 # Declare member variables here. Examples:
@@ -14,7 +14,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #    pass
-
-
-func _on_Timer_timeout():
-    GSceneManager.goto_scene_wloader("res://main_scenes/main_menu/MainMenu.tscn")

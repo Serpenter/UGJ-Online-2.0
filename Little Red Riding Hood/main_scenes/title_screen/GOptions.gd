@@ -1,10 +1,11 @@
-extends Node2D
+extends Node
 
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+var current_sound_toggle = true
+var current_sound_level = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,7 +15,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #    pass
-
-
-func _on_Timer_timeout():
-    GSceneManager.goto_scene_wloader("res://main_scenes/main_menu/MainMenu.tscn")
