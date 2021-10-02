@@ -25,7 +25,8 @@ const non_interactive_states = [
 
 enum CHARACTER_CONTROL {
     PLAYER,
-    AI
+    AI,
+    NONE
 }
 
 const dir_to_str = {

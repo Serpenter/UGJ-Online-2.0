@@ -1,8 +1,6 @@
-[gd_scene load_steps=85 format=2]
+[gd_scene load_steps=83 format=2]
 
 [ext_resource path="res://prefabs/characters/CharacterAnimation.gd" type="Script" id=1]
-[ext_resource path="res://prefabs/characters/character_sprites/lrrh_rapier_regular.png" type="Texture" id=2]
-[ext_resource path="res://prefabs/characters/character_sprites/lrrh_rapier_advanced.png" type="Texture" id=3]
 [ext_resource path="res://prefabs/characters/AttackZone.gd" type="Script" id=4]
 
 [sub_resource type="Animation" id=1]
@@ -1461,14 +1459,12 @@ script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 2 )
 offset = Vector2( 0, -30 )
 hframes = 13
 vframes = 21
 frame = 185
 
 [node name="AdvSlashSprite" type="Sprite" parent="."]
-texture = ExtResource( 3 )
 offset = Vector2( 0, -30 )
 hframes = 8
 vframes = 4
