@@ -3,7 +3,8 @@ extends Node2D
 
 
 var particles = {
-    "blood": preload("res://prefabs/particles/BloodParticles.tscn")
+    "blood": preload("res://prefabs/particles/BloodParticles.tscn"),
+    "big_blood": preload("res://prefabs/particles/BigBloodParticles.tscn")
    }
 
 # Called when the node enters the scene tree for the first time.
@@ -14,10 +15,6 @@ func _ready():
 #func _process(delta):
 #	pass
 
-#func spawn_blood():
-#    var new_particle = particles["blood"].instance()
-#    add_child(new_particle)
-#    new_particle.emitting = true
     
     
 func spawn_particle(particle_name, coordinates):

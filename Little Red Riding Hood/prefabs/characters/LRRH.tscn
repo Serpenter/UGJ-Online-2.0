@@ -18,7 +18,9 @@ radius = 28.2974
 [sub_resource type="CapsuleShape2D" id=4]
 height = 30.7268
 
-[node name="Character" type="KinematicBody2D"]
+[node name="Character" type="KinematicBody2D" groups=[
+"player",
+]]
 script = ExtResource( 8 )
 
 [node name="Animations" type="Node2D" parent="."]
@@ -68,6 +70,7 @@ shape = SubResource( 3 )
 [node name="CharacterArea" type="Area2D" parent="." groups=[
 "character_area",
 ]]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterArea"]
 position = Vector2( 1.40309, -23.5717 )
