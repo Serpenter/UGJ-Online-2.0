@@ -1,8 +1,9 @@
 extends Node2D
 
 
-onready var animation_player = $AnimationPlayer
-
+onready var player = $AnimationPlayer
+#export(Texture) var texture_reg = $Sprite.texture
+#export(Texture) var texture_adv = $AdvSlashSprite.texture
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,12 +1,13 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=79 format=2]
 
 [ext_resource path="res://prefabs/characters/CharacterAnimation.gd" type="Script" id=1]
 [ext_resource path="res://prefabs/characters/character_sprites/lrrh_saber_regular.png" type="Texture" id=2]
 [ext_resource path="res://prefabs/characters/character_sprites/lrrh_saber_adv_slash.png" type="Texture" id=3]
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=1]
 resource_name = "BowDown"
 length = 1.3
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame_coords")
 tracks/0/interp = 1
@@ -44,7 +45,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=2]
 resource_name = "BowLeft"
 length = 1.3
 tracks/0/type = "value"
@@ -84,7 +85,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=3]
 resource_name = "BowRight"
 length = 1.3
 tracks/0/type = "value"
@@ -124,7 +125,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=4]
 resource_name = "BowUp"
 length = 1.3
 tracks/0/type = "value"
@@ -164,7 +165,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=5]
 resource_name = "FallDown"
 length = 0.6
 tracks/0/type = "value"
@@ -204,8 +205,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "IdleDown"
+[sub_resource type="Animation" id=6]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame_coords")
@@ -244,8 +244,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "IdleLeft"
+[sub_resource type="Animation" id=7]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame_coords")
@@ -284,8 +283,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "IdleRight"
+[sub_resource type="Animation" id=8]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame_coords")
@@ -324,8 +322,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "IdleUp"
+[sub_resource type="Animation" id=9]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame_coords")
@@ -364,7 +361,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=28]
+[sub_resource type="Animation" id=10]
 resource_name = "SlashAdvDown"
 length = 0.6
 tracks/0/type = "value"
@@ -404,7 +401,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=11]
 resource_name = "SlashAdvLeft"
 length = 0.6
 tracks/0/type = "value"
@@ -444,7 +441,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=29]
+[sub_resource type="Animation" id=12]
 resource_name = "SlashAdvRight"
 length = 0.6
 tracks/0/type = "value"
@@ -484,7 +481,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=13]
 resource_name = "SlashAdvUp"
 length = 0.6
 tracks/0/type = "value"
@@ -524,9 +521,10 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=14]
 resource_name = "SlashRegularDown"
-length = 0.6
+length = 0.3
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame_coords")
 tracks/0/interp = 1
@@ -534,7 +532,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 14 ), Vector2( 1, 14 ), Vector2( 2, 14 ), Vector2( 3, 14 ), Vector2( 4, 14 ), Vector2( 5, 14 ) ]
@@ -564,9 +562,9 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=14]
-resource_name = "SlashRegularLeft"
-length = 0.6
+[sub_resource type="Animation" id=15]
+length = 0.3
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame_coords")
 tracks/0/interp = 1
@@ -574,7 +572,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 13 ), Vector2( 1, 13 ), Vector2( 2, 13 ), Vector2( 3, 13 ), Vector2( 4, 13 ), Vector2( 5, 13 ) ]
@@ -606,7 +604,8 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=16]
 resource_name = "SlashRegularRight"
-length = 0.6
+length = 0.3
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame_coords")
 tracks/0/interp = 1
@@ -614,7 +613,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 15 ), Vector2( 1, 15 ), Vector2( 2, 15 ), Vector2( 3, 15 ), Vector2( 4, 15 ), Vector2( 5, 15 ) ]
@@ -644,9 +643,9 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=13]
-resource_name = "SlashRegularUp"
-length = 0.6
+[sub_resource type="Animation" id=17]
+length = 0.3
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame_coords")
 tracks/0/interp = 1
@@ -654,7 +653,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 12 ), Vector2( 1, 12 ), Vector2( 2, 12 ), Vector2( 3, 12 ), Vector2( 4, 12 ), Vector2( 5, 12 ) ]
@@ -684,7 +683,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=18]
 resource_name = "SpellcastDown"
 length = 0.7
 tracks/0/type = "value"
@@ -724,7 +723,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=19]
 resource_name = "SpellcastLeft"
 length = 0.7
 tracks/0/type = "value"
@@ -764,7 +763,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=20]
 resource_name = "SpellcastRight"
 length = 0.7
 tracks/0/type = "value"
@@ -804,7 +803,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=21]
 resource_name = "SpellcastUp"
 length = 0.7
 tracks/0/type = "value"
@@ -844,8 +843,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=11]
-resource_name = "ThrustDown"
+[sub_resource type="Animation" id=22]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame_coords")
@@ -884,8 +882,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "ThrustLeft"
+[sub_resource type="Animation" id=23]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame_coords")
@@ -924,8 +921,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "ThrustRight"
+[sub_resource type="Animation" id=24]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame_coords")
@@ -964,8 +960,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "ThrustUp"
+[sub_resource type="Animation" id=25]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame_coords")
@@ -1004,8 +999,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "WalkDown"
+[sub_resource type="Animation" id=26]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -1045,8 +1039,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "WalkLeft"
+[sub_resource type="Animation" id=27]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -1086,8 +1079,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "WalkRight"
+[sub_resource type="Animation" id=28]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -1127,8 +1119,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "WalkUp"
+[sub_resource type="Animation" id=29]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -1168,6 +1159,191 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
+[sub_resource type="AnimationNodeAnimation" id=30]
+animation = "BowDown"
+
+[sub_resource type="AnimationNodeAnimation" id=31]
+animation = "BowLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=32]
+animation = "BowRight"
+
+[sub_resource type="AnimationNodeAnimation" id=33]
+animation = "BowUp"
+
+[sub_resource type="AnimationNodeAnimation" id=34]
+animation = "IdleDown"
+
+[sub_resource type="AnimationNodeAnimation" id=35]
+animation = "IdleLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=36]
+animation = "IdleRight"
+
+[sub_resource type="AnimationNodeAnimation" id=37]
+animation = "IdleUp"
+
+[sub_resource type="AnimationNodeAnimation" id=38]
+animation = "SlashAdvDown"
+
+[sub_resource type="AnimationNodeAnimation" id=39]
+animation = "SlashAdvLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=40]
+animation = "SlashAdvRight"
+
+[sub_resource type="AnimationNodeAnimation" id=41]
+animation = "SlashAdvUp"
+
+[sub_resource type="AnimationNodeAnimation" id=42]
+animation = "SlashRegularDown"
+
+[sub_resource type="AnimationNodeAnimation" id=43]
+animation = "SlashRegularLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=44]
+animation = "SlashRegularRight"
+
+[sub_resource type="AnimationNodeAnimation" id=45]
+animation = "SlashRegularUp"
+
+[sub_resource type="AnimationNodeAnimation" id=46]
+animation = "SpellcastDown"
+
+[sub_resource type="AnimationNodeAnimation" id=47]
+animation = "SpellcastLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=48]
+animation = "SpellcastRight"
+
+[sub_resource type="AnimationNodeAnimation" id=49]
+animation = "SpellcastUp"
+
+[sub_resource type="AnimationNodeAnimation" id=50]
+animation = "ThrustDown"
+
+[sub_resource type="AnimationNodeAnimation" id=51]
+animation = "ThrustLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=52]
+animation = "ThrustRight"
+
+[sub_resource type="AnimationNodeAnimation" id=53]
+animation = "ThrustUp"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=55]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=56]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=57]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=59]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=60]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=61]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=62]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=63]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=64]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=65]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=66]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=67]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=68]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=69]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=70]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=71]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=72]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=73]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=90]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=91]
+
+[sub_resource type="AnimationNodeStateMachine" id=74]
+states/BowDown/node = SubResource( 30 )
+states/BowDown/position = Vector2( 187, 73 )
+states/BowLeft/node = SubResource( 31 )
+states/BowLeft/position = Vector2( 194, 382 )
+states/BowRight/node = SubResource( 32 )
+states/BowRight/position = Vector2( 675, 58.6652 )
+states/BowUp/node = SubResource( 33 )
+states/BowUp/position = Vector2( 682, 360.665 )
+states/IdleDown/node = SubResource( 34 )
+states/IdleDown/position = Vector2( 420, 132 )
+states/IdleLeft/node = SubResource( 35 )
+states/IdleLeft/position = Vector2( 441, 484.124 )
+states/IdleRight/node = SubResource( 36 )
+states/IdleRight/position = Vector2( 937, 122.665 )
+states/IdleUp/node = SubResource( 37 )
+states/IdleUp/position = Vector2( 998, 418.665 )
+states/SlashAdvDown/node = SubResource( 38 )
+states/SlashAdvDown/position = Vector2( 202, 132 )
+states/SlashAdvLeft/node = SubResource( 39 )
+states/SlashAdvLeft/position = Vector2( 210, 430 )
+states/SlashAdvRight/node = SubResource( 40 )
+states/SlashAdvRight/position = Vector2( 690, 106.665 )
+states/SlashAdvUp/node = SubResource( 41 )
+states/SlashAdvUp/position = Vector2( 696, 411.665 )
+states/SlashRegularDown/node = SubResource( 42 )
+states/SlashRegularDown/position = Vector2( 212, 182 )
+states/SlashRegularLeft/node = SubResource( 43 )
+states/SlashRegularLeft/position = Vector2( 233, 484.124 )
+states/SlashRegularRight/node = SubResource( 44 )
+states/SlashRegularRight/position = Vector2( 702, 153.665 )
+states/SlashRegularUp/node = SubResource( 45 )
+states/SlashRegularUp/position = Vector2( 707, 460.665 )
+states/SpellcastDown/node = SubResource( 46 )
+states/SpellcastDown/position = Vector2( 194, 230 )
+states/SpellcastLeft/node = SubResource( 47 )
+states/SpellcastLeft/position = Vector2( 216, 537.124 )
+states/SpellcastRight/node = SubResource( 48 )
+states/SpellcastRight/position = Vector2( 690, 201.665 )
+states/SpellcastUp/node = SubResource( 49 )
+states/SpellcastUp/position = Vector2( 692, 507.665 )
+states/ThrustDown/node = SubResource( 50 )
+states/ThrustDown/position = Vector2( 274, 297 )
+states/ThrustLeft/node = SubResource( 51 )
+states/ThrustLeft/position = Vector2( 209, 585.124 )
+states/ThrustRight/node = SubResource( 52 )
+states/ThrustRight/position = Vector2( 684, 250.665 )
+states/ThrustUp/node = SubResource( 53 )
+states/ThrustUp/position = Vector2( 681, 557.665 )
+transitions = [ "SlashAdvDown", "IdleDown", SubResource( 55 ), "SlashRegularDown", "IdleDown", SubResource( 56 ), "SpellcastDown", "IdleDown", SubResource( 57 ), "BowLeft", "IdleLeft", SubResource( 59 ), "SlashAdvLeft", "IdleLeft", SubResource( 60 ), "SlashRegularLeft", "IdleLeft", SubResource( 61 ), "SpellcastLeft", "IdleLeft", SubResource( 62 ), "ThrustLeft", "IdleLeft", SubResource( 63 ), "BowRight", "IdleRight", SubResource( 64 ), "SlashAdvRight", "IdleRight", SubResource( 65 ), "SlashRegularRight", "IdleRight", SubResource( 66 ), "SpellcastRight", "IdleRight", SubResource( 67 ), "ThrustRight", "IdleRight", SubResource( 68 ), "BowUp", "IdleUp", SubResource( 69 ), "SlashAdvUp", "IdleUp", SubResource( 70 ), "SlashRegularUp", "IdleUp", SubResource( 71 ), "SpellcastUp", "IdleUp", SubResource( 72 ), "ThrustUp", "IdleUp", SubResource( 73 ), "BowDown", "IdleDown", SubResource( 90 ), "ThrustDown", "IdleDown", SubResource( 91 ) ]
+graph_offset = Vector2( 10, 4.66516 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=75]
+
 [node name="CharacterAnimation" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -1175,7 +1351,7 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 hframes = 13
 vframes = 21
-frame = 234
+frame = 182
 
 [node name="AdvSlashSprite" type="Sprite" parent="."]
 visible = false
@@ -1184,32 +1360,38 @@ hframes = 8
 vframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/BowDown = SubResource( 19 )
-anims/BowLeft = SubResource( 18 )
-anims/BowRight = SubResource( 20 )
-anims/BowUp = SubResource( 17 )
-anims/FallDown = SubResource( 21 )
-anims/IdleDown = SubResource( 1 )
-anims/IdleLeft = SubResource( 2 )
-anims/IdleRight = SubResource( 3 )
-anims/IdleUp = SubResource( 4 )
-anims/SlashAdvDown = SubResource( 28 )
-anims/SlashAdvLeft = SubResource( 27 )
-anims/SlashAdvRight = SubResource( 29 )
-anims/SlashAdvUp = SubResource( 26 )
-anims/SlashRegularDown = SubResource( 15 )
-anims/SlashRegularLeft = SubResource( 14 )
+anims/BowDown = SubResource( 1 )
+anims/BowLeft = SubResource( 2 )
+anims/BowRight = SubResource( 3 )
+anims/BowUp = SubResource( 4 )
+anims/FallDown = SubResource( 5 )
+anims/IdleDown = SubResource( 6 )
+anims/IdleLeft = SubResource( 7 )
+anims/IdleRight = SubResource( 8 )
+anims/IdleUp = SubResource( 9 )
+anims/SlashAdvDown = SubResource( 10 )
+anims/SlashAdvLeft = SubResource( 11 )
+anims/SlashAdvRight = SubResource( 12 )
+anims/SlashAdvUp = SubResource( 13 )
+anims/SlashRegularDown = SubResource( 14 )
+anims/SlashRegularLeft = SubResource( 15 )
 anims/SlashRegularRight = SubResource( 16 )
-anims/SlashRegularUp = SubResource( 13 )
-anims/SpellcastDown = SubResource( 24 )
-anims/SpellcastLeft = SubResource( 23 )
-anims/SpellcastRight = SubResource( 25 )
-anims/SpellcastUp = SubResource( 22 )
-anims/ThrustDown = SubResource( 11 )
-anims/ThrustLeft = SubResource( 10 )
-anims/ThrustRight = SubResource( 12 )
-anims/ThrustUp = SubResource( 9 )
-anims/WalkDown = SubResource( 6 )
-anims/WalkLeft = SubResource( 5 )
-anims/WalkRight = SubResource( 7 )
-anims/WalkUp = SubResource( 8 )
+anims/SlashRegularUp = SubResource( 17 )
+anims/SpellcastDown = SubResource( 18 )
+anims/SpellcastLeft = SubResource( 19 )
+anims/SpellcastRight = SubResource( 20 )
+anims/SpellcastUp = SubResource( 21 )
+anims/ThrustDown = SubResource( 22 )
+anims/ThrustLeft = SubResource( 23 )
+anims/ThrustRight = SubResource( 24 )
+anims/ThrustUp = SubResource( 25 )
+anims/WalkDown = SubResource( 26 )
+anims/WalkLeft = SubResource( 27 )
+anims/WalkRight = SubResource( 28 )
+anims/WalkUp = SubResource( 29 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 74 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 75 )
