@@ -1231,6 +1231,9 @@ animation = "ThrustRight"
 [sub_resource type="AnimationNodeAnimation" id=53]
 animation = "ThrustUp"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=54]
+switch_mode = 2
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=55]
 switch_mode = 2
 
@@ -1238,6 +1241,9 @@ switch_mode = 2
 switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=57]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=58]
 switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=59]
@@ -1280,15 +1286,9 @@ switch_mode = 2
 switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=72]
-switch_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=73]
-switch_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=90]
 switch_mode = 1
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=91]
+[sub_resource type="AnimationNodeStateMachineTransition" id=73]
 
 [sub_resource type="AnimationNodeStateMachine" id=74]
 states/BowDown/node = SubResource( 30 )
@@ -1339,7 +1339,7 @@ states/ThrustRight/node = SubResource( 52 )
 states/ThrustRight/position = Vector2( 684, 250.665 )
 states/ThrustUp/node = SubResource( 53 )
 states/ThrustUp/position = Vector2( 681, 557.665 )
-transitions = [ "SlashAdvDown", "IdleDown", SubResource( 55 ), "SlashRegularDown", "IdleDown", SubResource( 56 ), "SpellcastDown", "IdleDown", SubResource( 57 ), "BowLeft", "IdleLeft", SubResource( 59 ), "SlashAdvLeft", "IdleLeft", SubResource( 60 ), "SlashRegularLeft", "IdleLeft", SubResource( 61 ), "SpellcastLeft", "IdleLeft", SubResource( 62 ), "ThrustLeft", "IdleLeft", SubResource( 63 ), "BowRight", "IdleRight", SubResource( 64 ), "SlashAdvRight", "IdleRight", SubResource( 65 ), "SlashRegularRight", "IdleRight", SubResource( 66 ), "SpellcastRight", "IdleRight", SubResource( 67 ), "ThrustRight", "IdleRight", SubResource( 68 ), "BowUp", "IdleUp", SubResource( 69 ), "SlashAdvUp", "IdleUp", SubResource( 70 ), "SlashRegularUp", "IdleUp", SubResource( 71 ), "SpellcastUp", "IdleUp", SubResource( 72 ), "ThrustUp", "IdleUp", SubResource( 73 ), "BowDown", "IdleDown", SubResource( 90 ), "ThrustDown", "IdleDown", SubResource( 91 ) ]
+transitions = [ "SlashAdvDown", "IdleDown", SubResource( 54 ), "SlashRegularDown", "IdleDown", SubResource( 55 ), "SpellcastDown", "IdleDown", SubResource( 56 ), "BowLeft", "IdleLeft", SubResource( 57 ), "SlashAdvLeft", "IdleLeft", SubResource( 58 ), "SlashRegularLeft", "IdleLeft", SubResource( 59 ), "SpellcastLeft", "IdleLeft", SubResource( 60 ), "ThrustLeft", "IdleLeft", SubResource( 61 ), "BowRight", "IdleRight", SubResource( 62 ), "SlashAdvRight", "IdleRight", SubResource( 63 ), "SlashRegularRight", "IdleRight", SubResource( 64 ), "SpellcastRight", "IdleRight", SubResource( 65 ), "ThrustRight", "IdleRight", SubResource( 66 ), "BowUp", "IdleUp", SubResource( 67 ), "SlashAdvUp", "IdleUp", SubResource( 68 ), "SlashRegularUp", "IdleUp", SubResource( 69 ), "SpellcastUp", "IdleUp", SubResource( 70 ), "ThrustUp", "IdleUp", SubResource( 71 ), "BowDown", "IdleDown", SubResource( 72 ), "ThrustDown", "IdleDown", SubResource( 73 ) ]
 graph_offset = Vector2( 10, 4.66516 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=75]
@@ -1348,14 +1348,15 @@ graph_offset = Vector2( 10, 4.66516 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
 texture = ExtResource( 2 )
+offset = Vector2( 0, -30 )
 hframes = 13
 vframes = 21
 frame = 169
 
 [node name="AdvSlashSprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
+offset = Vector2( 0, -30 )
 hframes = 8
 vframes = 4
 frame = 21

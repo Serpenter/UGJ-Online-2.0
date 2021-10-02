@@ -18,7 +18,7 @@ func _ready():
         for child in get_children():
 #            for grandson in child.get_node("Scene/GameObjects").get_children():
 #                game_objects.add_child(grandson)
-            if child.get_node("ActiveArea").overlaps_area(get_parent().get_node("GameObjects/Char/ActiveRange")):
+            if child.get_node("ActiveArea").overlaps_area(get_parent().get_node("GameObjects/Character/ActiveRange")):
                 child.get_node("Scene").visible = true
             else:
                 child.get_node("Scene").visible = false

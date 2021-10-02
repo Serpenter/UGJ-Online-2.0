@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://test_scenes/TestTileBlock_01.tscn" type="PackedScene" id=1]
-[ext_resource path="res://prefabs/placeholder_char/PlaceholderChar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://prefabs/characters/LRRH.tscn" type="PackedScene" id=2]
 [ext_resource path="res://test_scenes/TestTileBlock_02.tscn" type="PackedScene" id=3]
 [ext_resource path="res://test_scenes/TestTileBlock_03.tscn" type="PackedScene" id=4]
 [ext_resource path="res://test_scenes/Blocks.gd" type="Script" id=5]
@@ -374,11 +374,11 @@ position = Vector2( 4160, 7296 )
 
 [node name="GameObjects" type="YSort" parent="."]
 
-[node name="Char" parent="GameObjects" instance=ExtResource( 2 )]
-position = Vector2( 3506.18, 2623.53 )
+[node name="Character" parent="GameObjects" instance=ExtResource( 2 )]
+position = Vector2( 3506.18, 2594.53 )
 
-[node name="Camera2D" type="Camera2D" parent="GameObjects/Char"]
-position = Vector2( 0.396851, 0 )
+[node name="Camera2D" type="Camera2D" parent="GameObjects/Character"]
+position = Vector2( 0.396973, 29 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 drag_margin_h_enabled = true

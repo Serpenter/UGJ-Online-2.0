@@ -6,6 +6,7 @@
 radius = 16.4597
 
 [node name="Sign" type="StaticBody2D"]
+position = Vector2( 0, -6 )
 
 [node name="Stone" type="Sprite" parent="."]
 position = Vector2( 0, -15 )
