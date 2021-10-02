@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://prefabs/buildings/castle_outside2.png" type="Texture" id=1]
+
+[sub_resource type="TileSet" id=2]
+0/name = "castle_outside2.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 32, 0, 512, 352 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 32, 32 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[node name="BigHouse" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 196606, 1073741824, 655364, 262142, 0, 589828, 262143, 1073741824, 655364, 196608, 1073741824, 655364, 196609, 1610612736, 655364, 196610, 1610612736, 655364, 327678, 0, 589828, 327679, 0, 589828, 262144, 536870912, 458763, 262145, 536870912, 458763, 262146, 536870912, 589828, 393214, 0, 589828, 393215, 0, 589828, 327680, 0, 262149, 327681, 0, 262150, 327682, 536870912, 589828, 458750, 0, 589828, 458751, 0, 589828, 393216, 0, 327685, 393217, 0, 327686, 393218, 536870912, 589828, 524286, 0, 589828, 524287, 0, 589828, 458752, 0, 393221, 458753, 0, 393222, 458754, 536870912, 589828, 589822, 0, 589828, 589823, 1073741824, 589828, 524288, 0, 458757, 524289, 0, 458758, 524290, 536870912, 589828, 655358, 0, 655364, 655359, 0, 655364, 589826, 536870912, 655364 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -33, 9.5, 0, -0.5, 64, -1, 159, 32, 158.5, 286, 56.5, 286.5, 48.5, 275.5, 13.5, 275.5, 9, 285.5, -62.5, 286.5, -63.5, 92.5, -47.5, 79, -31.5, 89 )

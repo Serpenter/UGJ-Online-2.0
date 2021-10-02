@@ -1,0 +1,390 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://test_scenes/TestTileBlock_01.tscn" type="PackedScene" id=1]
+[ext_resource path="res://prefabs/placeholder_char/PlaceholderChar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://test_scenes/TestTileBlock_02.tscn" type="PackedScene" id=3]
+[ext_resource path="res://test_scenes/TestTileBlock_03.tscn" type="PackedScene" id=4]
+[ext_resource path="res://test_scenes/Blocks.gd" type="Script" id=5]
+[ext_resource path="res://test_scenes/TestTileBlock_04.tscn" type="PackedScene" id=6]
+
+[node name="TestWorld" type="YSort"]
+
+[node name="Blocks" type="YSort" parent="."]
+script = ExtResource( 5 )
+columns = 8
+
+[node name="TestTileBlock_05" parent="Blocks" instance=ExtResource( 6 )]
+
+[node name="TestTileBlock_02" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 832, 0 )
+
+[node name="TestTileBlock_03" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1664, 0 )
+
+[node name="TestTileBlock_04" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 2496, 0 )
+
+[node name="TestTileBlock_06" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 3328, 0 )
+
+[node name="TestTileBlock_01" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 4160, 0 )
+
+[node name="TestTileBlock_07" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 0, 384 )
+
+[node name="TestTileBlock_08" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 832, 384 )
+
+[node name="TestTileBlock_09" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1664, 384 )
+
+[node name="TestTileBlock_10" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 2496, 384 )
+
+[node name="TestTileBlock_11" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 3328, 384 )
+
+[node name="TestTileBlock_12" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 4160, 384 )
+
+[node name="TestTileBlock_13" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 0, 768 )
+
+[node name="TestTileBlock_14" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 832, 768 )
+
+[node name="TestTileBlock_15" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 1664, 768 )
+
+[node name="TestTileBlock_16" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 2496, 768 )
+
+[node name="TestTileBlock_17" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 3328, 768 )
+
+[node name="TestTileBlock_18" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 4160, 768 )
+
+[node name="TestTileBlock_19" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 0, 1152 )
+
+[node name="TestTileBlock_20" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 832, 1152 )
+
+[node name="TestTileBlock_21" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 1664, 1152 )
+
+[node name="TestTileBlock_22" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 2496, 1152 )
+
+[node name="TestTileBlock_23" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 3328, 1152 )
+
+[node name="TestTileBlock_24" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 4160, 1152 )
+
+[node name="TestTileBlock_25" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 0, 1536 )
+
+[node name="TestTileBlock_26" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 832, 1536 )
+
+[node name="TestTileBlock_27" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 1664, 1536 )
+
+[node name="TestTileBlock_28" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 2496, 1536 )
+
+[node name="TestTileBlock_29" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 3328, 1536 )
+
+[node name="TestTileBlock_30" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 4160, 1536 )
+
+[node name="TestTileBlock_31" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 0, 1920 )
+
+[node name="TestTileBlock_32" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 832, 1920 )
+
+[node name="TestTileBlock_33" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 1664, 1920 )
+
+[node name="TestTileBlock_34" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 2496, 1920 )
+
+[node name="TestTileBlock_35" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 3328, 1920 )
+
+[node name="TestTileBlock_36" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 4160, 1920 )
+
+[node name="TestTileBlock_37" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 0, 2304 )
+
+[node name="TestTileBlock_38" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 832, 2304 )
+
+[node name="TestTileBlock_39" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 1664, 2304 )
+
+[node name="TestTileBlock_40" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 2496, 2304 )
+
+[node name="TestTileBlock_41" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 3328, 2304 )
+
+[node name="TestTileBlock_42" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 4160, 2304 )
+
+[node name="TestTileBlock_43" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 0, 2688 )
+
+[node name="TestTileBlock_44" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 832, 2688 )
+
+[node name="TestTileBlock_45" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 1664, 2688 )
+
+[node name="TestTileBlock_46" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 2496, 2688 )
+
+[node name="TestTileBlock_47" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 3328, 2688 )
+
+[node name="TestTileBlock_48" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 4160, 2688 )
+
+[node name="TestTileBlock_49" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 0, 3072 )
+
+[node name="TestTileBlock_50" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 832, 3072 )
+
+[node name="TestTileBlock_51" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 1664, 3072 )
+
+[node name="TestTileBlock_52" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 2496, 3072 )
+
+[node name="TestTileBlock_53" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 3328, 3072 )
+
+[node name="TestTileBlock_54" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 4160, 3072 )
+
+[node name="TestTileBlock_55" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 0, 3456 )
+
+[node name="TestTileBlock_56" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 832, 3456 )
+
+[node name="TestTileBlock_57" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 1664, 3456 )
+
+[node name="TestTileBlock_58" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 2496, 3456 )
+
+[node name="TestTileBlock_59" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 3328, 3456 )
+
+[node name="TestTileBlock_60" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 4160, 3456 )
+
+[node name="TestTileBlock_61" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 0, 3840 )
+
+[node name="TestTileBlock_62" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 832, 3840 )
+
+[node name="TestTileBlock_63" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1664, 3840 )
+
+[node name="TestTileBlock_64" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 2496, 3840 )
+
+[node name="TestTileBlock_65" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 3328, 3840 )
+
+[node name="TestTileBlock_66" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 4160, 3840 )
+
+[node name="TestTileBlock_67" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 0, 4224 )
+
+[node name="TestTileBlock_68" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 832, 4224 )
+
+[node name="TestTileBlock_69" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 1664, 4224 )
+
+[node name="TestTileBlock_70" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 2496, 4224 )
+
+[node name="TestTileBlock_71" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 3328, 4224 )
+
+[node name="TestTileBlock_72" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 4160, 4224 )
+
+[node name="TestTileBlock_73" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 0, 4608 )
+
+[node name="TestTileBlock_74" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 832, 4608 )
+
+[node name="TestTileBlock_75" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 1664, 4608 )
+
+[node name="TestTileBlock_76" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 2496, 4608 )
+
+[node name="TestTileBlock_77" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 3328, 4608 )
+
+[node name="TestTileBlock_78" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 4160, 4608 )
+
+[node name="TestTileBlock_79" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 0, 4992 )
+
+[node name="TestTileBlock_80" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 832, 4992 )
+
+[node name="TestTileBlock_81" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 1664, 4992 )
+
+[node name="TestTileBlock_82" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 2496, 4992 )
+
+[node name="TestTileBlock_83" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 3328, 4992 )
+
+[node name="TestTileBlock_84" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 4160, 4992 )
+
+[node name="TestTileBlock_85" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 0, 5376 )
+
+[node name="TestTileBlock_86" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 832, 5376 )
+
+[node name="TestTileBlock_87" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 1664, 5376 )
+
+[node name="TestTileBlock_88" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 2496, 5376 )
+
+[node name="TestTileBlock_89" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 3328, 5376 )
+
+[node name="TestTileBlock_90" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 4160, 5376 )
+
+[node name="TestTileBlock_91" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 0, 5760 )
+
+[node name="TestTileBlock_92" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 832, 5760 )
+
+[node name="TestTileBlock_93" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 1664, 5760 )
+
+[node name="TestTileBlock_94" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 2496, 5760 )
+
+[node name="TestTileBlock_95" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 3328, 5760 )
+
+[node name="TestTileBlock_96" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 4160, 5760 )
+
+[node name="TestTileBlock_97" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 0, 6144 )
+
+[node name="TestTileBlock_98" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 832, 6144 )
+
+[node name="TestTileBlock_99" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 1664, 6144 )
+
+[node name="TestTileBlock_100" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 2496, 6144 )
+
+[node name="TestTileBlock_101" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 3328, 6144 )
+
+[node name="TestTileBlock_102" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 4160, 6144 )
+
+[node name="TestTileBlock_103" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 0, 6528 )
+
+[node name="TestTileBlock_104" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 832, 6528 )
+
+[node name="TestTileBlock_105" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 1664, 6528 )
+
+[node name="TestTileBlock_106" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 2496, 6528 )
+
+[node name="TestTileBlock_107" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 3328, 6528 )
+
+[node name="TestTileBlock_108" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 4160, 6528 )
+
+[node name="TestTileBlock_109" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 0, 6912 )
+
+[node name="TestTileBlock_110" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 832, 6912 )
+
+[node name="TestTileBlock_111" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 1664, 6912 )
+
+[node name="TestTileBlock_112" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 2496, 6912 )
+
+[node name="TestTileBlock_113" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 3328, 6912 )
+
+[node name="TestTileBlock_114" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 4160, 6912 )
+
+[node name="TestTileBlock_115" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 0, 7296 )
+
+[node name="TestTileBlock_116" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 832, 7296 )
+
+[node name="TestTileBlock_117" parent="Blocks" instance=ExtResource( 1 )]
+position = Vector2( 1664, 7296 )
+
+[node name="TestTileBlock_118" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 2496, 7296 )
+
+[node name="TestTileBlock_119" parent="Blocks" instance=ExtResource( 3 )]
+position = Vector2( 3328, 7296 )
+
+[node name="TestTileBlock_120" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 4160, 7296 )
+
+[node name="GameObjects" type="YSort" parent="."]
+
+[node name="Char" parent="GameObjects" instance=ExtResource( 2 )]
+position = Vector2( 3506.18, 2623.53 )
+
+[node name="Camera2D" type="Camera2D" parent="GameObjects/Char"]
+position = Vector2( 0.396851, 0 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+drag_margin_left = 0.3
+drag_margin_top = 0.3
+drag_margin_right = 0.3
+drag_margin_bottom = 0.3

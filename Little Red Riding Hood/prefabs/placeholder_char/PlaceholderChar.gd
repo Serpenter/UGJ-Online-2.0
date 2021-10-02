@@ -23,3 +23,6 @@ func _physics_process(_delta):
     motion = motion.normalized() * MOTION_SPEED
     #warning-ignore:return_value_discarded
     move_and_slide(motion)
+
+func is_character():
+    return true
