@@ -1,9 +1,9 @@
-extends Node2D
+extends "res://prefabs/characters/Character.gd"
 
 
-onready var player = $AnimationPlayer
-#export(Texture) var texture_reg = $Sprite.texture
-#export(Texture) var texture_adv = $AdvSlashSprite.texture
+
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
