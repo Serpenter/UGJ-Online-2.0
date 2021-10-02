@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 export var MOTION_SPEED = 5000
+export var team = 1
 
 enum CHARACTER_STATE {
 	IDLE,
@@ -12,6 +13,14 @@ const non_interactive_states = [
 	CHARACTER_STATE.ATTACK
 ]
 
+enum CHARACTER_CONTROL {
+	PLAYER,
+	AI_IDLE,
+	AI_ATTACK,
+	AI_KEEP_DISTANCE
+	AI_FLEE
+}
+
 const dir_to_str = {
 					Vector2(0,-1) : "Up",
 					Vector2(-1,0) : "Left",
@@ -21,21 +30,22 @@ const dir_to_str = {
 					}
 
 var can_attack = true
-var attack_name = "SlashRegular"
+var attack_name = "SlashAdv"
 onready var animation = $Animations/LRRHAnimationDagger
 
 onready var equipment = {
 	"unarmed": {
 		"can_attack":true,
-		"attack_name": "SlashRegular",
+		"attack_name": "SlashAdv",
 		"animation": $Animations/LRRHAnimationDagger
 	}
 }
 
 var is_controlled_by_player = true
+var char_control = CHARACTER_CONTROL.PLAYER
 var use_mouse_look_dir = false
 var use_mouse_attack_dir = true
-var current_state = CHARACTER_STATE.IDLE
+export var current_state = CHARACTER_STATE.IDLE
 var motion = Vector2()
 var look_dir = Vector2()
 
@@ -90,7 +100,7 @@ func update_look_dir():
 		look_dir = motion.normalized()
 		return
 		
-	if not is_controlled_by_player or not use_mouse_look_dir:
+	if not char_control == CHARACTER_CONTROL.PLAYER or not use_mouse_look_dir:
 		return
 	
 	look_dir = get_global_mouse_position() - get_global_position()
@@ -130,7 +140,7 @@ func resolve_movement_animation():
 	
 	
 func process_player_input(_delta):
-	if not is_controlled_by_player:
+	if not char_control == CHARACTER_CONTROL.PLAYER:
 		return
 		
 	if current_state in non_interactive_states:
