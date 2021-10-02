@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://prefabs/decorations/lawn_flowers/LawnFlower_05.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefabs/decorations/flower_box/FlowerBox_04.tscn" type="PackedScene" id=2]
@@ -24,6 +24,8 @@
 [ext_resource path="res://prefabs/decorations/signs/Sign.tscn" type="PackedScene" id=22]
 [ext_resource path="res://main_scenes/world_chunks/start_location/Mother.gd" type="Script" id=23]
 [ext_resource path="res://main_scenes/world_chunks/start_location/SpecialPie.gd" type="Script" id=24]
+[ext_resource path="res://prefabs/decorations/signs/Sign_04.tscn" type="PackedScene" id=25]
+[ext_resource path="res://prefabs/quest_utils/TextSign.tscn" type="PackedScene" id=26]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 41.8718
@@ -31,14 +33,14 @@ radius = 41.8718
 [sub_resource type="CircleShape2D" id=2]
 radius = 46.502
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0, 0.592593, 1 )
 colors = PoolColorArray( 0.898438, 0.72192, 0.119324, 1, 0.774621, 0.49615, 0.138116, 0.93431, 1, 1, 1, 0.219608 )
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=4]
 radius = 57.7044
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 1024, 600 )
 
 [node name="TileBlock" type="YSort"]
@@ -47,7 +49,6 @@ script = ExtResource( 15 )
 [node name="Scene" type="YSort" parent="."]
 
 [node name="TileMap5" type="TileMap" parent="Scene"]
-position = Vector2( 1.41418, 0 )
 tile_set = ExtResource( 13 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 32
@@ -95,7 +96,7 @@ autoplay = true
 max_distance = 1000.0
 
 [node name="Trunk" parent="Scene/GameObjects" instance=ExtResource( 7 )]
-position = Vector2( 140.309, -167.03 )
+position = Vector2( 288.041, -271.024 )
 
 [node name="Pie" parent="Scene/GameObjects/Trunk" instance=ExtResource( 21 )]
 position = Vector2( -0.660019, -27.1974 )
@@ -125,7 +126,7 @@ spread = 180.0
 gravity = Vector2( 0, 0 )
 initial_velocity = 20.0
 initial_velocity_random = 0.5
-color_ramp = SubResource( 5 )
+color_ramp = SubResource( 3 )
 
 [node name="Tween" type="Tween" parent="Scene/GameObjects/Trunk/Pie"]
 
@@ -256,14 +257,27 @@ collision_layer = 64
 collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scene/GameObjects/Mother/Area2D"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="PhrasePlayer" parent="Scene/GameObjects/Mother" instance=ExtResource( 17 )]
 position = Vector2( -124.417, -56.0665 )
 phrases = [ "Go, my dear, and see how your grandmother is doing,", "for I hear she has been very ill.", "Take her a cake, and this little pot of butter.\" " ]
+visible_time = 5
+autoplay_interval = 3
 
 [node name="SayTimer" type="Timer" parent="Scene/GameObjects/Mother"]
 one_shot = true
+
+[node name="Sign" parent="Scene/GameObjects/Mother/SayTimer" instance=ExtResource( 25 )]
+
+[node name="Sign" parent="Scene/GameObjects" instance=ExtResource( 25 )]
+position = Vector2( 69.8033, -146.526 )
+
+[node name="TextSign" parent="Scene/GameObjects/Sign" instance=ExtResource( 26 )]
+scale = Vector2( 2, 2 )
+phrase_enter = "Grandma's house"
+phrase_exit = "Farewell"
+is_active = true
 
 [node name="ActiveArea" type="Area2D" parent="."]
 collision_layer = 32
@@ -271,7 +285,7 @@ collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActiveArea"]
 position = Vector2( 512.581, 299.555 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [connection signal="area_shape_entered" from="Scene/GameObjects/StrangeMailbox/Activator" to="Scene/GameObjects/StrangeMailbox" method="_on_Activator_area_shape_entered"]
 [connection signal="area_shape_entered" from="Scene/GameObjects/Trunk/Pie/Area2D" to="Scene/GameObjects/Trunk/Pie" method="_on_Area2D_area_shape_entered"]

@@ -47,6 +47,7 @@ func _ready():
 #    pass
 func _on_quest_change(new_quest_state):
     quest_state = new_quest_state
+    emit_signal("quest_state_change", quest_state)
     match quest_state:
         QuestState.Taken:
             pass
