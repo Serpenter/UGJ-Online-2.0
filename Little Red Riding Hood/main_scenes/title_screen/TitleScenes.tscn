@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://main_scenes/title_screen/return_to_title_screen.gd" type="Script" id=1]
+[ext_resource path="res://resources/fonts/DeluxePaintComics_96.tres" type="DynamicFont" id=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0313726, 0.0196078, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_top = 0.05
+anchor_bottom = 0.05
+margin_left = 196.007
+margin_top = 46.4475
+margin_right = 817.007
+margin_bottom = 134.448
+rect_pivot_offset = Vector2( 381.807, 58.9181 )
+custom_fonts/font = ExtResource( 2 )
+text = "Label"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+anchor_top = 0.05
+anchor_bottom = 0.05
+margin_left = 209.0
+margin_top = 190.0
+margin_right = 436.0
+margin_bottom = 278.0
+rect_pivot_offset = Vector2( 154.556, 44 )
+custom_fonts/font = ExtResource( 2 )
+text = "Sound"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+anchor_top = 0.58
+anchor_bottom = 0.58
+margin_left = 202.0
+margin_right = 823.0
+margin_bottom = 94.0
+custom_fonts/font = ExtResource( 2 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

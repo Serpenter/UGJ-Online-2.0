@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://main_scenes/title_screen/ExitButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main_scenes/title_screen/NewGameButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://main_scenes/title_screen/OptionsButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/fonts/8bitmmr_72.tres" type="DynamicFont" id=4]
+[ext_resource path="res://main_scenes/title_screen/FadeIn.tscn" type="PackedScene" id=5]
+[ext_resource path="res://main_scenes/title_screen/Title Screen.gd" type="Script" id=6]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0313726, 0.0196078, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_left = 60.0
+margin_top = 40.0
+margin_right = 964.0
+margin_bottom = 565.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Menu"]
+margin_right = 904.0
+margin_bottom = 78.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.670588, 0.105882, 0.105882, 1 )
+text = "Little Red Riding Hood"
+align = 1
+
+[node name="CenterRow" type="HBoxContainer" parent="Menu"]
+margin_top = 82.0
+margin_right = 904.0
+margin_bottom = 525.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
+margin_right = 904.0
+margin_bottom = 443.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 24
+alignment = 1
+
+[node name="MenuButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 1 )]
+margin_top = 89.0
+margin_right = 904.0
+margin_bottom = 161.0
+
+[node name="OptionsButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 3 )]
+margin_top = 185.0
+margin_right = 904.0
+margin_bottom = 257.0
+scene_to_load = "res://main_scenes/title_screen/OptionsScene.tscn"
+
+[node name="NewGameButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 2 )]
+margin_top = 281.0
+margin_right = 904.0
+margin_bottom = 353.0
+scene_to_load = "res://main_scenes/title_screen/NewGameScene.tscn"
+
+[node name="FadeIn" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[connection signal="pressed" from="Menu/CenterRow/Buttons/MenuButton" to="." method="_on_MenuButton_pressed"]
+[connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]
