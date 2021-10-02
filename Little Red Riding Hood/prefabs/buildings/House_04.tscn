@@ -4,33 +4,34 @@
 [ext_resource path="res://prefabs/buildings/House.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 77.2478, 33.0325 )
+extents = Vector2( 101.419, 37.2561 )
 
 [node name="House_01" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="House" type="Sprite" parent="."]
-scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
+offset = Vector2( 0, -85 )
 region_enabled = true
 region_rect = Rect2( 392, 384, 224, 176 )
 
 [node name="RoofBlue" type="Sprite" parent="House"]
 visible = false
-position = Vector2( 0, -40 )
 texture = ExtResource( 1 )
+offset = Vector2( 0, -125 )
 region_enabled = true
 region_rect = Rect2( 400, 576, 208, 96 )
 
 [node name="RoofGreen" type="Sprite" parent="House"]
 visible = false
-position = Vector2( 0, -40 )
 texture = ExtResource( 1 )
+offset = Vector2( 0, -125 )
 region_enabled = true
 region_rect = Rect2( 400, 672, 208, 96 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 0, -40 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 1.41577, 23.2701 )
+position = Vector2( 0, -10 )
 shape = SubResource( 1 )
