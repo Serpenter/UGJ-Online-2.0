@@ -14,3 +14,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #    pass
+
+func _on_ActiveArea_area_shape_entered(area_id, area, area_shape, local_shape):
+    if area.name == "ActiveRange":
+        $Scene.visible = true
+
+
+func _on_ActiveArea_area_shape_exited(area_id, area, area_shape, local_shape):
+    if area.name == "ActiveRange":
+        $Scene.visible = false

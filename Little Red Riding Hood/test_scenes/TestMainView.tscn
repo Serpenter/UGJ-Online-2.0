@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://test_scenes/TestWorld.tscn" type="PackedScene" id=1]
 [ext_resource path="res://test_scenes/Viewport.gd" type="Script" id=2]
+[ext_resource path="res://test_scenes/Label.gd" type="Script" id=3]
 
 [sub_resource type="World" id=1]
 
@@ -49,4 +50,13 @@ script = ExtResource( 2 )
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer/ViewportContainer2/Viewport"]
 offset = Vector2( 832, 384 )
 current = true
-zoom = Vector2( 15, 15 )
+zoom = Vector2( 60, 60 )
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "FPS"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
