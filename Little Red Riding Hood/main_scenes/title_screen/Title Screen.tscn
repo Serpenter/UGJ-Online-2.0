@@ -15,6 +15,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0313726, 0.0196078, 0.105882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Menu" type="VBoxContainer" parent="."]
 margin_left = 60.0
 margin_top = 40.0
