@@ -7,7 +7,7 @@
 [ext_resource path="res://test_scenes/Blocks.gd" type="Script" id=5]
 [ext_resource path="res://test_scenes/TestTileBlock_04.tscn" type="PackedScene" id=6]
 
-[node name="TestWorld" type="Node2D"]
+[node name="TestWorld" type="YSort"]
 
 [node name="Blocks" type="YSort" parent="."]
 script = ExtResource( 5 )
@@ -381,8 +381,10 @@ position = Vector2( 3506.18, 2623.53 )
 position = Vector2( 0.396851, 0 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
 smoothing_enabled = true
-drag_margin_left = 0.08
-drag_margin_top = 0.08
-drag_margin_right = 0.08
-drag_margin_bottom = 0.08
+drag_margin_left = 0.3
+drag_margin_top = 0.3
+drag_margin_right = 0.3
+drag_margin_bottom = 0.3
