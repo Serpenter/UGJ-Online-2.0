@@ -7,7 +7,9 @@ enum QuestState {
     InProgress,
     Finished
 }
-var quest_state = QuestState.NotTaken
+var quest_state = QuestState.NotTaken setget _on_quest_change
+signal quest_state_change(new_state)
+
 
 enum MeatPie {
     NotTaken,
@@ -43,3 +45,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #    pass
+func _on_quest_change(new_quest_state):
+    quest_state = new_quest_state
+    match quest_state:
+        QuestState.Taken:
+            pass
+        QuestState.InProgress:
+            pass

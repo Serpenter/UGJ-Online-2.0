@@ -10,12 +10,17 @@ export(Roof) var roof = Roof.Red setget set_roof
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    pass
+    change_color()
+
 
 func set_roof(new_val):
+    roof = new_val
+    change_color()
+
+
+func change_color():
     $House/RoofBlue.hide()
     $House/RoofGreen.hide()
-    roof = new_val
     if roof == Roof.Red:
         $House/RoofBlue.hide()
         $House/RoofGreen.hide()

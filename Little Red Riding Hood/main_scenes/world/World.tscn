@@ -16,7 +16,8 @@ height = 608
 [node name="GameObjects" type="YSort" parent="."]
 
 [node name="Character" parent="GameObjects" instance=ExtResource( 2 )]
-position = Vector2( 250.778, 438.058 )
+position = Vector2( 276.941, 511.194 )
+MOTION_SPEED = 7500
 
 [node name="Camera2D" type="Camera2D" parent="GameObjects/Character"]
 current = true

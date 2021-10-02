@@ -16,12 +16,14 @@ region_enabled = true
 region_rect = Rect2( 392, 384, 224, 176 )
 
 [node name="RoofBlue" type="Sprite" parent="House"]
+visible = false
 texture = ExtResource( 1 )
 offset = Vector2( 0, -125 )
 region_enabled = true
 region_rect = Rect2( 400, 576, 208, 96 )
 
 [node name="RoofGreen" type="Sprite" parent="House"]
+visible = false
 texture = ExtResource( 1 )
 offset = Vector2( 0, -125 )
 region_enabled = true

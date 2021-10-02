@@ -15,7 +15,7 @@ func _ready():
 
 func _on_Activator_area_shape_entered(area_id, area, area_shape, local_shape):
     if area.name == "ActiveRange" and not has_been_activated:
-        $ReplicaPlayer.play_one_replica()
+        $PhrasePlayer.play_one_phrase()
         has_been_activated = true
 #        has_been_activated = false
 #        $"/root/GMainQuestState".quest_state = $"/root/GMainQuestState".QuestState.InProgress

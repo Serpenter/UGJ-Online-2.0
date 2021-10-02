@@ -1,39 +1,52 @@
 extends Node2D
 
-export(Array, String) var replicas : Array = [] setget set_replica
+export(Array, String) var phrases : Array = [] setget set_phrases
 export var autoplay_all = true
 export var visible_time = 4
 export var autoplay_interval = 2 setget set_autoplay
 export var offset = Vector2(16, -64)
 
 
-var current_replica_index = -1
+var current_phrase_index = -1
+var has_finished = false
 
+signal plot_finished
 
 func _ready():
     $Label.visible = false
 
 
-func play_one_replica():
+func say_phrase(phrase):
+    var new_label = $Label.duplicate()
+    new_label.visible = true
+    add_child(new_label)
+    new_label.text = phrase
+    run_tween(new_label)
+
+
+func play_one_phrase():
     if autoplay_all:
         $Autoplay.start()
-    if current_replica_index != -1 and current_replica_index < replicas.size():
+    if current_phrase_index != -1 and current_phrase_index < phrases.size():
         var new_label = $Label.duplicate()
         new_label.visible = true
         add_child(new_label)
-        new_label.text = replicas[current_replica_index]
-        current_replica_index += 1
-        if current_replica_index >= replicas.size():
-            current_replica_index == -1
+        new_label.text = phrases[current_phrase_index]
+        current_phrase_index += 1
+        if current_phrase_index >= phrases.size():
+            current_phrase_index = -1
+            has_finished = true
+            emit_signal("plot_finished")
         run_tween(new_label)
 
 
-func set_replica(_replicas):
-    replicas = _replicas
-    if replicas.size() > 0:
-        current_replica_index = 0
+func set_phrases(_phrases):
+    phrases = _phrases
+    has_finished = false
+    if phrases.size() > 0:
+        current_phrase_index = 0
     else:
-        current_replica_index = -1
+        current_phrase_index = -1
 
 
 func run_tween(label):
@@ -59,8 +72,9 @@ func run_tween(label):
 
 
 func _on_Tween_tween_completed(object, key):
-    remove_child(object)
-    object.queue_free()
+    if get_node(object.name):
+        remove_child(object)
+        object.queue_free()
 
 
 func set_autoplay(_interval):
@@ -69,6 +83,6 @@ func set_autoplay(_interval):
 
 
 func _on_Autoplay_timeout():
-    play_one_replica()
+    play_one_phrase()
     if autoplay_all:
         $Autoplay.start()
