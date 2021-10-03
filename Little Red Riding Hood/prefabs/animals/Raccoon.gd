@@ -1,9 +1,7 @@
-tool
 extends Node2D
 
 
 onready var player = $AnimationPlayer
-export(Texture) var sprite_reg setget set_sprute_reg
 
 enum RACOON_STATE {
     IDLE,
@@ -24,41 +22,36 @@ export var look_dir = Vector2.RIGHT
 export var speed = 100
 export var move_direction = Vector2.RIGHT
 var target_position = Vector2.ZERO
+export var sit_at_start = true
+export var run_away_dir = Vector2.RIGHT
+export var run_away_dist = 1000
 
-
-func just_sit(dir):
-    look_dir = dir
+func just_sit():
     var animation_name = "Idle" + get_direction_str(look_dir)
     player.play(animation_name)
     current_state = RACOON_STATE.IDLE
 
 func fly_and_die(start_pos, end_pos, dir):
     look_dir = dir
-    var animation_name = "Move" + get_direction_str(look_dir)
+    var animation_name = "Walk" + get_direction_str(look_dir)
     player.play(animation_name)
     current_state = RACOON_STATE.WALK
     position = start_pos
     target_position = end_pos
 
-func set_sprute_reg(tex):
-    sprite_reg = tex
-    if Engine.editor_hint:
-        get_node("Sprite").texture = sprite_reg
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    get_node("Sprite").texture = sprite_reg
-
-
+    if sit_at_start:
+        just_sit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-    if current_state != RACOON_STATE.MOVE:
+    if current_state != RACOON_STATE.WALK:
         return
     
     var position_diff = target_position - position
-    if abs(position_diff) > speed * delta:
-        position += position_diff.normalized() * delta
+    if position_diff.length() > speed * delta:
+        position += position_diff.normalized() * delta * speed
     else:
         position = target_position
         die()
@@ -78,3 +71,14 @@ func get_direction_str(direction):
         
     var result = dir_to_str.get(approx_dir)
     return result
+
+func run_away():
+    var end_pos = position + run_away_dist * run_away_dir.normalized()
+    fly_and_die(position, end_pos, run_away_dir)
+
+func _on_Area2D_area_entered(area):
+    if current_state == RACOON_STATE.WALK:
+        return
+
+    if area.is_in_group("character_area"):
+        run_away()
