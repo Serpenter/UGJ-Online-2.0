@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://prefabs/characters/CharacterAnimation.gd" type="Script" id=1]
 [ext_resource path="res://prefabs/characters/AttackZone.gd" type="Script" id=4]
@@ -656,6 +656,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("AttackZone/DamageZoneDown2:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=15]
 length = 0.6
@@ -695,6 +707,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AttackZone/DamageZoneLeft2:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=16]
@@ -737,6 +761,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("AttackZone/DamageZoneRight2:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=17]
 length = 0.6
@@ -776,6 +812,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AttackZone/DamageZoneUp2:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=18]
@@ -1439,20 +1487,32 @@ graph_offset = Vector2( 10, 4.66516 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=75]
 
-[sub_resource type="RectangleShape2D" id=76]
+[sub_resource type="RectangleShape2D" id=77]
 extents = Vector2( 20.6231, 9.07853 )
 
-[sub_resource type="RectangleShape2D" id=77]
+[sub_resource type="RectangleShape2D" id=78]
 extents = Vector2( 18.6922, 10 )
 
-[sub_resource type="RectangleShape2D" id=78]
+[sub_resource type="RectangleShape2D" id=79]
 extents = Vector2( 16.6544, 10 )
 
-[sub_resource type="RectangleShape2D" id=79]
+[sub_resource type="RectangleShape2D" id=80]
 extents = Vector2( 17.1574, 10 )
 
-[sub_resource type="RectangleShape2D" id=80]
+[sub_resource type="RectangleShape2D" id=76]
 extents = Vector2( 36.8647, 12.8273 )
+
+[sub_resource type="RectangleShape2D" id=81]
+extents = Vector2( 20.4202, 7.69584 )
+
+[sub_resource type="RectangleShape2D" id=82]
+extents = Vector2( 19.4448, 10 )
+
+[sub_resource type="RectangleShape2D" id=83]
+extents = Vector2( 15.7718, 10 )
+
+[sub_resource type="RectangleShape2D" id=84]
+extents = Vector2( 17.3154, 10 )
 
 [node name="CharacterAnimation" type="Node2D"]
 script = ExtResource( 1 )
@@ -1461,14 +1521,14 @@ script = ExtResource( 1 )
 offset = Vector2( 0, -30 )
 hframes = 13
 vframes = 21
-frame = 262
+frame = 160
 
 [node name="AdvSlashSprite" type="Sprite" parent="."]
 visible = false
 offset = Vector2( 0, -30 )
 hframes = 8
 vframes = 4
-frame = 5
+frame = 28
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/BowDown = SubResource( 1 )
@@ -1510,41 +1570,38 @@ parameters/playback = SubResource( 75 )
 [node name="AttackZone" type="Node2D" parent="."]
 
 [node name="AttackZoneUp" type="Area2D" parent="AttackZone"]
-visible = false
 monitorable = false
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/AttackZoneUp"]
 position = Vector2( 1.18921, -45.5135 )
-shape = SubResource( 76 )
+shape = SubResource( 77 )
 
 [node name="AttackZoneDown" type="Area2D" parent="AttackZone"]
-visible = false
 monitorable = false
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/AttackZoneDown"]
 position = Vector2( 1.93095, -5.13582 )
-shape = SubResource( 77 )
+shape = SubResource( 78 )
 
 [node name="AttackZoneRight" type="Area2D" parent="AttackZone"]
-visible = false
 monitorable = false
 script = ExtResource( 4 )
+can_damage = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/AttackZoneRight"]
 position = Vector2( 34.8881, -25.4683 )
-shape = SubResource( 78 )
+shape = SubResource( 79 )
 
 [node name="AttackZoneLeft" type="Area2D" parent="AttackZone"]
-visible = false
 monitoring = false
 monitorable = false
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/AttackZoneLeft"]
 position = Vector2( -31.9131, -25.3201 )
-shape = SubResource( 79 )
+shape = SubResource( 80 )
 
 [node name="DamageZoneUp" type="Area2D" parent="AttackZone"]
 visible = false
@@ -1554,18 +1611,36 @@ script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/DamageZoneUp"]
 position = Vector2( 0, -47 )
-shape = SubResource( 80 )
+shape = SubResource( 76 )
+
+[node name="DamageZoneUp2" type="Area2D" parent="AttackZone"]
+monitoring = false
+monitorable = false
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/DamageZoneUp2"]
+position = Vector2( 0.701538, -46.5791 )
+shape = SubResource( 81 )
 
 [node name="DamageZoneDown" type="Area2D" parent="AttackZone"]
 visible = false
-monitoring = false
 monitorable = false
 script = ExtResource( 4 )
 can_damage = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/DamageZoneDown"]
 position = Vector2( 1.33635, 1.99943 )
-shape = SubResource( 80 )
+shape = SubResource( 76 )
+
+[node name="DamageZoneDown2" type="Area2D" parent="AttackZone"]
+monitoring = false
+monitorable = false
+script = ExtResource( 4 )
+can_damage = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/DamageZoneDown2"]
+position = Vector2( 1.63365, -4.83851 )
+shape = SubResource( 82 )
 
 [node name="DamageZoneRight" type="Area2D" parent="AttackZone"]
 visible = false
@@ -1576,7 +1651,17 @@ can_damage = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/DamageZoneRight"]
 position = Vector2( 39.645, -26.9548 )
-shape = SubResource( 80 )
+shape = SubResource( 76 )
+
+[node name="DamageZoneRight2" type="Area2D" parent="AttackZone"]
+monitoring = false
+monitorable = false
+script = ExtResource( 4 )
+can_damage = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/DamageZoneRight2"]
+position = Vector2( 35.6314, -25.4683 )
+shape = SubResource( 83 )
 
 [node name="DamageZoneLeft" type="Area2D" parent="AttackZone"]
 visible = false
@@ -1587,4 +1672,14 @@ can_damage = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/DamageZoneLeft"]
 position = Vector2( -41.4268, -26.5093 )
-shape = SubResource( 80 )
+shape = SubResource( 76 )
+
+[node name="DamageZoneLeft2" type="Area2D" parent="AttackZone"]
+monitoring = false
+monitorable = false
+script = ExtResource( 4 )
+can_damage = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/DamageZoneLeft2"]
+position = Vector2( -32.2104, -25.1714 )
+shape = SubResource( 84 )

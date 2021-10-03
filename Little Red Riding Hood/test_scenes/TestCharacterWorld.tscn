@@ -1,11 +1,18 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://main_scenes/world/tile_assets/TestTileWorld.tres" type="TileSet" id=1]
 [ext_resource path="res://prefabs/trees/TreeLeaf.tscn" type="PackedScene" id=2]
-[ext_resource path="res://prefabs/characters/TestEnemy02.tscn" type="PackedScene" id=3]
+[ext_resource path="res://prefabs/characters/Grandma.tscn" type="PackedScene" id=3]
 [ext_resource path="res://prefabs/characters/LRRH.tscn" type="PackedScene" id=4]
 [ext_resource path="res://prefabs/particles/ParticleManager.gd" type="Script" id=5]
 [ext_resource path="res://prefabs/animals/BirdWhiteCrest.tscn" type="PackedScene" id=6]
+[ext_resource path="res://test_scenes/TestEquip.gd" type="Script" id=7]
+[ext_resource path="res://prefabs/characters/Wolf.tscn" type="PackedScene" id=8]
+[ext_resource path="res://prefabs/characters/TestEnemy02.tscn" type="PackedScene" id=9]
+[ext_resource path="res://prefabs/characters/Mother.tscn" type="PackedScene" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 77.2809, 46.5633 )
 
 [node name="TestTileWorld" type="Node2D"]
 
@@ -71,5 +78,24 @@ position = Vector2( 578.425, 249.606 )
 [node name="TreeLeaf" parent="GameObjects" instance=ExtResource( 2 )]
 position = Vector2( 190.931, 247.484 )
 
-[node name="Character2" parent="GameObjects" instance=ExtResource( 3 )]
-position = Vector2( 1084.21, 137.363 )
+[node name="Area2D" type="Area2D" parent="GameObjects"]
+position = Vector2( 100, 100 )
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameObjects/Area2D"]
+position = Vector2( 427.875, 273.396 )
+shape = SubResource( 1 )
+
+[node name="Character3" parent="GameObjects" instance=ExtResource( 8 )]
+position = Vector2( 70.0268, 457.465 )
+
+[node name="Character2" parent="GameObjects" instance=ExtResource( 9 )]
+position = Vector2( 1191.17, 163.747 )
+
+[node name="Character4" parent="GameObjects" instance=ExtResource( 10 )]
+position = Vector2( 424.814, 178.661 )
+
+[node name="Character" parent="." instance=ExtResource( 3 )]
+position = Vector2( 503.546, 146.494 )
+
+[connection signal="area_entered" from="GameObjects/Area2D" to="GameObjects/Area2D" method="_on_Area2D_area_entered"]

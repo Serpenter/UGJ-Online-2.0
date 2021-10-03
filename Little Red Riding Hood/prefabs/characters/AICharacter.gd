@@ -18,11 +18,14 @@ func _ready():
     team = CHARACTER_TEAM.ENEMY
 #    FOR DEBUG, LATER SET IN EDITOR
     detection_area.connect("area_entered", self, "_on_detection_area_entered")
-    attack_zone_up.connect("area_entered", self, "_on_attack_zone_entered", [Vector2.UP])
-    attack_zone_down.connect("area_entered", self, "_on_attack_zone_entered", [Vector2.DOWN])
-    attack_zone_left.connect("area_entered", self, "_on_attack_zone_entered", [Vector2.LEFT])
-    attack_zone_right.connect("area_entered", self, "_on_attack_zone_entered", [Vector2.RIGHT])
+    animation.attack_zone_up.connect("area_entered", self, "_on_attack_zone_entered", [Vector2.UP])
+    animation.attack_zone_down.connect("area_entered", self, "_on_attack_zone_entered", [Vector2.DOWN])
+    animation.attack_zone_left.connect("area_entered", self, "_on_attack_zone_entered", [Vector2.LEFT])
+    animation.attack_zone_right.connect("area_entered", self, "_on_attack_zone_entered", [Vector2.RIGHT])
     enemy_teams = [CHARACTER_TEAM.PLAYER, CHARACTER_TEAM.PLAYER_ALLY]
+    
+    emit_signal("health_changed", health)
+    emit_signal("max_health_changed", health_max)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

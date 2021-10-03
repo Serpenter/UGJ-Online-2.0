@@ -39,41 +39,36 @@ const dir_to_str = {
                     Vector2(0,0) :"Down"
                     }
 
-var can_attack = true
-var attack_name = "SlashAdv"
+export var can_attack = false
+export var attack_name = "SlashAdv"
 onready var animation = $Animations/CharacterAnimation
-var weapon_damage = 10
-onready var equipment = {
-    "rapier": {
-        "can_attack":true,
-        "attack_name": "SlashAdv",
-        "animation": $Animations/CharacterAnimation,
-        "weapon_damage": 10
-    }
-}
+export var weapon_damage = 10
+onready var equipment = {}
 
-export var enemy_teams = [CHARACTER_TEAM.PLAYER, CHARACTER_TEAM.PLAYER_ALLY]
+export var enemy_teams = []
 
 onready var collision_shape = $CollisionShape2D
+
+export var has_blood = true
 
 onready var detection_area = $DetectionArea
 onready var event_area = $EventArea
 onready var alert_area = $AlertArea
 onready var pursue_area = $PursueArea
 
-onready var attack_zone_up = $Animations/CharacterAnimation/AttackZone/AttackZoneUp
-onready var attack_zone_down = $Animations/CharacterAnimation/AttackZone/AttackZoneDown
-onready var attack_zone_left = $Animations/CharacterAnimation/AttackZone/AttackZoneLeft
-onready var attack_zone_right = $Animations/CharacterAnimation/AttackZone/AttackZoneRight
-
-onready var damage_zone_up = $Animations/CharacterAnimation/AttackZone/DamageZoneUp
-onready var damage_zone_down = $Animations/CharacterAnimation/AttackZone/DamageZoneDown
-onready var damage_zone_left = $Animations/CharacterAnimation/AttackZone/DamageZoneLeft
-onready var damage_zone_right = $Animations/CharacterAnimation/AttackZone/DamageZoneRight
+#onready var attack_zone_up = $Animations/CharacterAnimation/AttackZone/AttackZoneUp
+#onready var attack_zone_down = $Animations/CharacterAnimation/AttackZone/AttackZoneDown
+#onready var attack_zone_left = $Animations/CharacterAnimation/AttackZone/AttackZoneLeft
+#onready var attack_zone_right = $Animations/CharacterAnimation/AttackZone/AttackZoneRight
+#
+#onready var damage_zone_up = $Animations/CharacterAnimation/AttackZone/DamageZoneUp
+#onready var damage_zone_down = $Animations/CharacterAnimation/AttackZone/DamageZoneDown
+#onready var damage_zone_left = $Animations/CharacterAnimation/AttackZone/DamageZoneLeft
+#onready var damage_zone_right = $Animations/CharacterAnimation/AttackZone/DamageZoneRight
 
 onready var enemy_check_area = $EnemyCheckArea
 
-var char_control = CHARACTER_CONTROL.PLAYER
+export var char_control = CHARACTER_CONTROL.PLAYER
 var use_mouse_look_dir = false
 var use_mouse_attack_dir = true
 export var current_state = CHARACTER_STATE.IDLE
@@ -82,7 +77,7 @@ var look_dir = Vector2()
 
 signal health_changed
 signal max_health_changed
-export var health = 50
+export var health = 100
 export var health_max = 100
 export var healing_speed = 10
 
@@ -90,23 +85,84 @@ var target = null
 var is_player = false
 var is_enemy_near = false
 
+func set_equipment():
+    equipment = {
+        "unarmed": {
+            "can_attack":false,
+            "attack_name": "SlashAdv",
+            "animation": $Animations/CharacterAnimationUnarmed,
+            "weapon_damage": 1
+        },
+        "rapier": {
+            "can_attack":true,
+            "attack_name": "SlashAdv",
+            "animation": $Animations/CharacterAnimationRapier,
+            "weapon_damage": 10
+        },
+        "axe": {
+            "can_attack":true,
+            "attack_name": "SlashRegular",
+            "animation": $Animations/CharacterAnimationAxe,
+            "weapon_damage": 20
+        },
+        "waraxe": {
+            "can_attack":true,
+            "attack_name": "SlashAdv",
+            "animation": $Animations/CharacterAnimationWaraxe,
+            "weapon_damage": 25
+        },
+        "dagger": {
+            "can_attack":true,
+            "attack_name": "SlashRegular",
+            "animation": $Animations/CharacterAnimationDagger,
+            "weapon_damage": 5
+        }
+    }
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    damage_zone_up.connect("area_entered", self, "_on_damage_zone_entered")
-    damage_zone_down.connect("area_entered", self, "_on_damage_zone_entered")
-    damage_zone_left.connect("area_entered", self, "_on_damage_zone_entered")
-    damage_zone_right.connect("area_entered", self, "_on_damage_zone_entered")
+    is_player = is_in_group("player")
+    
+    if is_player:
+        char_control == CHARACTER_CONTROL.PLAYER
+        enemy_teams = [CHARACTER_TEAM.ENEMY]
+        set_equipment()
+        
+        
+    
+    connect_damage_zones()
     
     enemy_check_area.connect("area_entered", self, "_on_enemy_check_area_entered")
     
     emit_signal("health_changed", health)
     emit_signal("max_health_changed", health_max)
     
-    is_player = is_in_group("player")
+func connect_damage_zones():
+    animation.damage_zone_up.connect("area_entered", self, "_on_damage_zone_entered")
+    animation.damage_zone_down.connect("area_entered", self, "_on_damage_zone_entered")
+    animation.damage_zone_left.connect("area_entered", self, "_on_damage_zone_entered")
+    animation.damage_zone_right.connect("area_entered", self, "_on_damage_zone_entered")
+    animation.damage_zone_up2.connect("area_entered", self, "_on_damage_zone_entered")
+    animation.damage_zone_down2.connect("area_entered", self, "_on_damage_zone_entered")
+    animation.damage_zone_left2.connect("area_entered", self, "_on_damage_zone_entered")
+    animation.damage_zone_right2.connect("area_entered", self, "_on_damage_zone_entered")  
+        
+func equip_weapon(weapon_name):
+    if not weapon_name in equipment.keys():
+        print("ATTEMPT TO EQUIP NONEXISTANT WEAPON")
+        return
     
-    if is_player:
-        char_control == CHARACTER_CONTROL.PLAYER
-        enemy_teams = [CHARACTER_TEAM.ENEMY]
+    current_state = CHARACTER_STATE.IDLE
+    animation.visible = false
+    
+    can_attack = equipment[weapon_name]["can_attack"]
+    attack_name = equipment[weapon_name]["attack_name"]
+    animation = equipment[weapon_name]["animation"]
+    weapon_damage = equipment[weapon_name]["weapon_damage"]
+    
+    connect_damage_zones()
+    
+    animation.visible = true  
+    
 
 func resolve_healing(delta):
     if not is_player:
@@ -134,15 +190,15 @@ func set_max_health(new_max_health):
     
 
 func reset_attack_zone_monitoring():
-    attack_zone_up.monitoring = false
-    attack_zone_down.monitoring = false
-    attack_zone_left.monitoring = false
-    attack_zone_right.monitoring = false
+    animation.attack_zone_up.monitoring = false
+    animation.attack_zone_down.monitoring = false
+    animation.attack_zone_left.monitoring = false
+    animation.attack_zone_right.monitoring = false
     
-    attack_zone_up.monitoring = true
-    attack_zone_down.monitoring = true
-    attack_zone_left.monitoring = true
-    attack_zone_right.monitoring = true
+    animation.attack_zone_up.monitoring = true
+    animation.attack_zone_down.monitoring = true
+    animation.attack_zone_left.monitoring = true
+    animation.attack_zone_right.monitoring = true
     
 
 func heal(added_health):
@@ -183,6 +239,7 @@ func die():
 #        team = CHARACTER_TEAM.WORLD
 
 func _on_damage_zone_entered(area):
+
     if area.is_in_group("character_area"):
         var owner = area.get_owner()
 
