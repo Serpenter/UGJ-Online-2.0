@@ -14,7 +14,7 @@ func _ready():
 
 
 func increase_grimdark_level():
-    grimdark_level = grimdark_level + 0.02
+    grimdark_level = grimdark_level + 0.04
     if grimdark_level >= 1.0:
         pass #game over
 

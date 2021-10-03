@@ -5,7 +5,8 @@ onready var player = $AnimationPlayer
 
 enum RACOON_STATE {
     IDLE,
-    WALK
+    WALK,
+    MOVE
    }
 
 const dir_to_str = {

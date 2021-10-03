@@ -24,7 +24,6 @@ GPostmortemList="*res://global_scripts/GPostmortemList.gd"
 
 [display]
 
-window/size/fullscreen=true
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
 

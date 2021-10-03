@@ -8,10 +8,13 @@ enum QuestState {
     NotTaken,
     Taken,
     InProgress,
-    Finished
+    Finished,
+    Failed,
+    Darkened
 }
 var quest_state = QuestState.NotTaken setget _on_quest_change
 signal quest_state_change(new_state)
+signal game_over(quest_state)
 
 
 enum MeatPie {
@@ -56,3 +59,5 @@ func _on_quest_change(new_quest_state):
             pass
         QuestState.InProgress:
             pass
+        QuestState.Darkened:
+            emit_signal("game_over", quest_state)

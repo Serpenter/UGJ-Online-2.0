@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://main_scenes/world_chunks/start_location/StartLocation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefabs/characters/LRRH.tscn" type="PackedScene" id=2]
@@ -35,11 +35,31 @@
 [ext_resource path="res://main_scenes/world_chunks/wolfen_forest/WolfPlotController.gd" type="Script" id=33]
 [ext_resource path="res://prefabs/quest_utils/TextSign.tscn" type="PackedScene" id=34]
 [ext_resource path="res://prefabs/characters/Wolf.tscn" type="PackedScene" id=35]
+[ext_resource path="res://prefabs/characters/Grandma.tscn" type="PackedScene" id=36]
+[ext_resource path="res://prefabs/animals/Raccoon.tscn" type="PackedScene" id=37]
+[ext_resource path="res://test_scenes/Enot.tscn" type="PackedScene" id=38]
+[ext_resource path="res://main_scenes/world/GrandmaPlotController.gd" type="Script" id=39]
+[ext_resource path="res://resources/dpcomic.ttf" type="DynamicFontData" id=40]
+[ext_resource path="res://main_scenes/world/Area2D.gd" type="Script" id=41]
+[ext_resource path="res://main_scenes/world/Area2D2.gd" type="Script" id=42]
+[ext_resource path="res://main_scenes/world/Area2D3.gd" type="Script" id=43]
 
-[sub_resource type="CircleShape2D" id=8]
+[sub_resource type="CircleShape2D" id=1]
 radius = 64.0
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="CircleShape2D" id=2]
+radius = 92.0
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 128.0
+
+[sub_resource type="CircleShape2D" id=12]
+radius = 64.0
+
+[sub_resource type="CircleShape2D" id=13]
+radius = 64.0
+
+[sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
 
 uniform float brightness = 0.8;
@@ -58,27 +78,32 @@ void fragment() {
 
 "
 
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
 shader_param/brightness = 1.0
 shader_param/contrast = 1.0
 shader_param/saturation = 1.1
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.027451, 0.784314, 0.466667, 0.243137 )
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.47451, 0.894118, 0.0117647, 0.352941 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.109804, 0.729412, 1, 0.286275 )
 
-[sub_resource type="DynamicFontData" id=6]
+[sub_resource type="DynamicFontData" id=8]
 font_path = "res://resources/dpcomic.ttf"
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=9]
 size = 12
-font_data = SubResource( 6 )
+font_data = SubResource( 8 )
+
+[sub_resource type="DynamicFont" id=10]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 40 )
 
 [node name="World" type="YSort"]
 
@@ -119,11 +144,18 @@ position = Vector2( 2048, -1824 )
 [node name="TileBlock11" parent="Blocks" instance=ExtResource( 19 )]
 position = Vector2( -2048, -1824 )
 
+[node name="TileBlock32" parent="Blocks" instance=ExtResource( 19 )]
+position = Vector2( 1024, -3040 )
+
 [node name="TileBlock12" parent="Blocks" instance=ExtResource( 21 )]
 position = Vector2( 2048, 1216 )
 
 [node name="TileBlock13" parent="Blocks" instance=ExtResource( 15 )]
 position = Vector2( -2048, 1216 )
+
+[node name="TileBlock34" parent="Blocks" instance=ExtResource( 15 )]
+position = Vector2( 4096, -2432 )
+rotation = 3.14159
 
 [node name="TileBlock14" parent="Blocks" instance=ExtResource( 23 )]
 position = Vector2( -2048, 608 )
@@ -134,11 +166,17 @@ position = Vector2( -2048, 0 )
 [node name="TileBlock16" parent="Blocks" instance=ExtResource( 20 )]
 position = Vector2( -2048, -608 )
 
+[node name="TileBlock31" parent="Blocks" instance=ExtResource( 23 )]
+position = Vector2( 1024, -2432 )
+
 [node name="TileBlock17" parent="Blocks" instance=ExtResource( 23 )]
 position = Vector2( -2048, -1216 )
 
 [node name="TileBlock18" parent="Blocks" instance=ExtResource( 26 )]
 position = Vector2( -1024, -1824 )
+
+[node name="TileBlock33" parent="Blocks" instance=ExtResource( 26 )]
+position = Vector2( 2048, -3040 )
 
 [node name="TileBlock20" parent="Blocks" instance=ExtResource( 17 )]
 position = Vector2( 1024, -1824 )
@@ -155,8 +193,16 @@ position = Vector2( 1024, 1216 )
 [node name="TileBlock24" parent="Blocks" instance=ExtResource( 24 )]
 position = Vector2( 2048, 608 )
 
+[node name="TileBlock36" parent="Blocks" instance=ExtResource( 24 )]
+position = Vector2( 4096, -1824 )
+scale = Vector2( -1, 1 )
+
 [node name="TileBlock25" parent="Blocks" instance=ExtResource( 22 )]
 position = Vector2( 2048, 0 )
+
+[node name="TileBlock35" parent="Blocks" instance=ExtResource( 22 )]
+position = Vector2( 4096, -1824 )
+rotation = 3.14159
 
 [node name="TileBlock26" parent="Blocks" instance=ExtResource( 20 )]
 position = Vector2( 2048, -608 )
@@ -176,6 +222,9 @@ position = Vector2( 0, -1824 )
 [node name="TileBlock29" parent="Blocks" instance=ExtResource( 28 )]
 position = Vector2( 1024, -1216 )
 
+[node name="TileBlock30" parent="Blocks" instance=ExtResource( 38 )]
+position = Vector2( 2048, -2432 )
+
 [node name="GameObjects" type="YSort" parent="."]
 script = ExtResource( 30 )
 
@@ -185,7 +234,7 @@ MOTION_SPEED = 8500
 
 [node name="Camera2D" type="Camera2D" parent="GameObjects/Character"]
 current = true
-zoom = Vector2( 0.5, 0.5 )
+zoom = Vector2( 0.75, 0.75 )
 smoothing_enabled = true
 drag_margin_left = 0.08
 drag_margin_top = 0.08
@@ -212,7 +261,7 @@ collision_layer = 64
 collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameObjects/Wolf/WolfPlotController/Area2D"]
-shape = SubResource( 8 )
+shape = SubResource( 1 )
 
 [node name="UnboundTimer" type="Timer" parent="GameObjects/Wolf/WolfPlotController"]
 wait_time = 6.0
@@ -224,6 +273,72 @@ is_active = true
 one_shot = true
 radius = 140
 
+[node name="Grandma" parent="GameObjects" instance=ExtResource( 36 )]
+position = Vector2( 814.748, -501.732 )
+
+[node name="GrandmaPlotController" type="Node2D" parent="GameObjects/Grandma"]
+script = ExtResource( 39 )
+
+[node name="PhrasePlayer" parent="GameObjects/Grandma/GrandmaPlotController" instance=ExtResource( 31 )]
+position = Vector2( -32.3745, -63.4877 )
+
+[node name="Area2D" type="Area2D" parent="GameObjects/Grandma/GrandmaPlotController"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameObjects/Grandma/GrandmaPlotController/Area2D"]
+shape = SubResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="GameObjects"]
+position = Vector2( -458.912, 422.142 )
+collision_layer = 96
+collision_mask = 96
+script = ExtResource( 41 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameObjects/Area2D"]
+shape = SubResource( 11 )
+
+[node name="Raccoon" parent="GameObjects" instance=ExtResource( 37 )]
+position = Vector2( -461.527, 416.61 )
+current_state = 1
+
+[node name="Area2D2" type="Area2D" parent="GameObjects"]
+position = Vector2( -854.351, 1048.6 )
+collision_layer = 96
+collision_mask = 96
+script = ExtResource( 42 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameObjects/Area2D2"]
+shape = SubResource( 12 )
+
+[node name="Raccoon2" parent="GameObjects" instance=ExtResource( 37 )]
+modulate = Color( 0.505882, 0.337255, 0.337255, 1 )
+position = Vector2( -859.392, 1050.91 )
+current_state = 1
+run_away_dir = Vector2( 0, 1 )
+
+[node name="Area2D3" type="Area2D" parent="GameObjects"]
+position = Vector2( -746.716, 47.9312 )
+collision_layer = 96
+collision_mask = 96
+script = ExtResource( 43 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameObjects/Area2D3"]
+shape = SubResource( 13 )
+
+[node name="Area2D4" type="Area2D" parent="GameObjects"]
+position = Vector2( -417.223, 41.5744 )
+collision_layer = 96
+collision_mask = 96
+script = ExtResource( 43 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameObjects/Area2D4"]
+shape = SubResource( 13 )
+
+[node name="Raccoon3" parent="GameObjects" instance=ExtResource( 37 )]
+modulate = Color( 0.862745, 0.470588, 0.121569, 1 )
+position = Vector2( -750.295, 48.7097 )
+current_state = 1
+run_away_dir = Vector2( -1, 0 )
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
@@ -234,7 +349,7 @@ __meta__ = {
 }
 
 [node name="Grimdark" type="TextureRect" parent="CanvasLayer/Control"]
-material = SubResource( 2 )
+material = SubResource( 4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 13 )
@@ -280,24 +395,52 @@ size_flags_horizontal = 3
 [node name="Button" type="Button" parent="CanvasLayer/HUD/HBoxContainer/VBoxContainer"]
 margin_right = 146.0
 margin_bottom = 12.0
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/focus = SubResource( 5 )
-custom_styles/disabled = SubResource( 5 )
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 7 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 text = "Exit"
 flat = true
 
 [node name="Endgame" type="MarginContainer" parent="CanvasLayer"]
-margin_right = 40.0
-margin_bottom = 40.0
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Endgame"]
+margin_right = 1004.0
+margin_bottom = 580.0
+
+[node name="TextLabel" type="Label" parent="CanvasLayer/Endgame/VBoxContainer"]
+margin_top = 282.0
+margin_right = 1004.0
+margin_bottom = 298.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 10 )
+text = "Game over"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Endgame/VBoxContainer"]
+margin_right = 12.0
+margin_bottom = 20.0
+
 [connection signal="plot_finished" from="GameObjects/Wolf/WolfPlotController/PhrasePlayer" to="GameObjects/Wolf/WolfPlotController" method="_on_PhrasePlayer_plot_finished"]
 [connection signal="area_shape_entered" from="GameObjects/Wolf/WolfPlotController/Area2D" to="GameObjects/Wolf/WolfPlotController" method="_on_Area2D_area_shape_entered"]
 [connection signal="timeout" from="GameObjects/Wolf/WolfPlotController/UnboundTimer" to="GameObjects/Wolf/WolfPlotController" method="_on_UnboundTimer_timeout"]
+[connection signal="area_shape_entered" from="GameObjects/Area2D" to="GameObjects/Area2D" method="_on_Area2D_area_shape_entered"]
+[connection signal="area_shape_entered" from="GameObjects/Area2D2" to="GameObjects/Area2D2" method="_on_Area2D2_area_shape_entered"]
+[connection signal="area_shape_entered" from="GameObjects/Area2D3" to="GameObjects/Area2D3" method="_on_Area2D3_area_shape_entered"]
+[connection signal="area_shape_entered" from="GameObjects/Area2D4" to="GameObjects/Area2D4" method="_on_Area2D3_area_shape_entered"]
 [connection signal="tween_all_completed" from="CanvasLayer/Control/Grimdark/Tween" to="CanvasLayer/Control/Grimdark" method="_on_Tween_tween_all_completed"]
 [connection signal="pressed" from="CanvasLayer/HUD/HBoxContainer/VBoxContainer/Button" to="CanvasLayer/HUD" method="_on_Button_pressed"]
