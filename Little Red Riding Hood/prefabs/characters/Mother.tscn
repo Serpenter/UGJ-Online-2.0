@@ -1,33 +1,29 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://prefabs/characters/CharacterAnimation.tscn" type="PackedScene" id=1]
-[ext_resource path="res://prefabs/characters/character_sprites/lrrh_rapier.png" type="Texture" id=2]
-[ext_resource path="res://prefabs/characters/character_sprites/lrrh_axe.png" type="Texture" id=3]
+[ext_resource path="res://prefabs/characters/character_sprites/mother.png" type="Texture" id=3]
 [ext_resource path="res://prefabs/characters/Healthbar.tscn" type="PackedScene" id=4]
-[ext_resource path="res://prefabs/characters/character_sprites/lrrh_unarmed.png" type="Texture" id=5]
-[ext_resource path="res://prefabs/characters/character_sprites/lrrh_rapier_adv.png" type="Texture" id=6]
-[ext_resource path="res://prefabs/characters/character_sprites/lrrh_dagger.png" type="Texture" id=7]
+[ext_resource path="res://prefabs/characters/CharacterAnimation.tscn" type="PackedScene" id=5]
+[ext_resource path="res://prefabs/characters/character_sprites/swordsman_advanced.png" type="Texture" id=7]
 [ext_resource path="res://prefabs/characters/Character.gd" type="Script" id=8]
-[ext_resource path="res://prefabs/characters/character_sprites/lrrh_waraxe_reg.png" type="Texture" id=9]
-[ext_resource path="res://prefabs/characters/character_sprites/lrrh_waraxe_adv.png" type="Texture" id=10]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=85]
 radius = 12.2063
 height = 0.0
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=86]
 radius = 300.0
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=87]
 radius = 28.2974
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=88]
 height = 30.7268
 
 [node name="Character" type="KinematicBody2D" groups=[
 "player",
 ]]
 script = ExtResource( 8 )
+char_control = 2
 
 [node name="HealthBar" parent="." instance=ExtResource( 4 )]
 margin_left = -23.291
@@ -37,46 +33,20 @@ margin_bottom = -53.5975
 
 [node name="Animations" type="Node2D" parent="."]
 
-[node name="CharacterAnimation" parent="Animations" instance=ExtResource( 1 )]
-sprite_reg = ExtResource( 5 )
-sprite_adv = ExtResource( 6 )
-
-[node name="CharacterAnimationWaraxe" parent="Animations" instance=ExtResource( 1 )]
-visible = false
-sprite_reg = ExtResource( 9 )
-sprite_adv = ExtResource( 10 )
-
-[node name="CharacterAnimationUnarmed" parent="Animations" instance=ExtResource( 1 )]
-visible = false
-sprite_reg = ExtResource( 5 )
-sprite_adv = ExtResource( 6 )
-
-[node name="CharacterAnimationRapier" parent="Animations" instance=ExtResource( 1 )]
-visible = false
-sprite_reg = ExtResource( 2 )
-sprite_adv = ExtResource( 6 )
-
-[node name="CharacterAnimationAxe" parent="Animations" instance=ExtResource( 1 )]
-visible = false
+[node name="CharacterAnimation" parent="Animations" instance=ExtResource( 5 )]
 sprite_reg = ExtResource( 3 )
-sprite_adv = ExtResource( 6 )
-
-[node name="CharacterAnimationDagger" parent="Animations" instance=ExtResource( 1 )]
-visible = false
-sprite_reg = ExtResource( 7 )
-sprite_adv = ExtResource( 6 )
+sprite_adv = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, -9 )
-shape = SubResource( 1 )
+shape = SubResource( 85 )
 
 [node name="DetectionArea" type="Area2D" parent="."]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 visible = false
-shape = SubResource( 5 )
+shape = SubResource( 86 )
 
 [node name="EnemyCheckArea" type="Area2D" parent="."]
 visible = false
@@ -84,25 +54,25 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCheckArea"]
 visible = false
-shape = SubResource( 5 )
+shape = SubResource( 86 )
 
 [node name="EventArea" type="Area2D" parent="."]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EventArea"]
-shape = SubResource( 5 )
+shape = SubResource( 86 )
 
 [node name="AlertArea" type="Area2D" parent="."]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AlertArea"]
-shape = SubResource( 5 )
+shape = SubResource( 86 )
 
 [node name="PursueArea" type="Area2D" parent="."]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PursueArea"]
-shape = SubResource( 5 )
+shape = SubResource( 86 )
 
 [node name="ActiveRange" type="Area2D" parent="."]
 visible = false
@@ -112,7 +82,7 @@ collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActiveRange"]
 position = Vector2( 0, -5 )
-shape = SubResource( 3 )
+shape = SubResource( 87 )
 
 [node name="CharacterArea" type="Area2D" parent="." groups=[
 "character_area",
@@ -121,7 +91,7 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterArea"]
 position = Vector2( 1.40309, -23.5717 )
-shape = SubResource( 4 )
+shape = SubResource( 88 )
 
 [node name="Timer" type="Timer" parent="."]
 process_mode = 0

@@ -2,6 +2,21 @@ tool
 extends Node2D
 
 
+onready var attack_zone_up = $AttackZone/AttackZoneUp
+onready var attack_zone_down = $AttackZone/AttackZoneDown
+onready var attack_zone_left = $AttackZone/AttackZoneLeft
+onready var attack_zone_right = $AttackZone/AttackZoneRight
+
+onready var damage_zone_up = $AttackZone/DamageZoneUp
+onready var damage_zone_down = $AttackZone/DamageZoneDown
+onready var damage_zone_left = $AttackZone/DamageZoneLeft
+onready var damage_zone_right = $AttackZone/DamageZoneRight
+
+onready var damage_zone_up2 = $AttackZone/DamageZoneUp2
+onready var damage_zone_down2 = $AttackZone/DamageZoneDown2
+onready var damage_zone_left2 = $AttackZone/DamageZoneLeft2
+onready var damage_zone_right2 = $AttackZone/DamageZoneRight2
+
 onready var player = $AnimationPlayer
 export(Texture) var sprite_reg setget set_sprute_reg
 export(Texture) var sprite_adv setget set_sprite_adv
