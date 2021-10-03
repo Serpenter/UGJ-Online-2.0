@@ -20,16 +20,16 @@ height = 608
 hide_tiles = false
 
 [node name="TileBlock6" parent="TitleScreen" instance=ExtResource( 11 )]
-position = Vector2( 1024, 672 )
+position = Vector2( 1024, 768 )
 
 [node name="TileBlock2" parent="TitleScreen" instance=ExtResource( 8 )]
-position = Vector2( 0, 608 )
+position = Vector2( 0, 768 )
 
 [node name="TileBlock4" parent="TitleScreen" instance=ExtResource( 8 )]
 position = Vector2( -1024, 0 )
 
 [node name="TileBlock5" parent="TitleScreen" instance=ExtResource( 8 )]
-position = Vector2( 0, -608 )
+position = Vector2( 0, -768 )
 
 [node name="TileBlock" parent="TitleScreen" instance=ExtResource( 7 )]
 

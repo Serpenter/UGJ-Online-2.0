@@ -1,24 +1,22 @@
 extends Node2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 onready var wolf = get_parent()
 onready var quest_control = $"/root/GMainQuestState"
+onready var quest_state = $"/root/GMainQuestState".quest_state
 # Called when the node enters the scene tree for the first time.
+var finished_chapter = false
+
 func _ready():
     $"/root/GMainQuestState".wolf_node = get_parent()
-
+    $"/root/GMainQuestState".connect("quest_state_change", self, "_handle_quest_change")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
-#    pass
+#    pass Come closer! I will not harm you. Now.
 
 
 func _on_Area2D_area_shape_entered(area_id, area, area_shape, local_shape):
-    if area.name == "ActiveRange":
+    if area.name == "ActiveRange" and not finished_chapter:
         
         var quest_state = quest_control.quest_state
         if quest_state == quest_control.QuestState.NotTaken:
@@ -44,3 +42,15 @@ func _on_Area2D_area_shape_entered(area_id, area, area_shape, local_shape):
 
 func _on_UnboundTimer_timeout():
     quest_control.character_node.MOTION_SPEED = 8500
+
+
+func _handle_quest_change(new_state):
+    if new_state == quest_control.QuestState.InProgress:
+        $TextSign.phrase_enter = "Come closer! I will not harm you. For now."
+
+
+func _on_PhrasePlayer_plot_finished():
+    finished_chapter = true
+    get_parent().ai_state = get_parent().AI_STATE.FLEE_FROM_TARGET
+    wolf.MOTION_SPEED = 12000
+    quest_control.wolf_state = quest_control.Wolf.Encounter
