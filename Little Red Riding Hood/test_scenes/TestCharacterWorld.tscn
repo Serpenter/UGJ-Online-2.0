@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://main_scenes/world/tile_assets/TestTileWorld.tres" type="TileSet" id=1]
 [ext_resource path="res://prefabs/trees/TreeLeaf.tscn" type="PackedScene" id=2]
@@ -10,9 +10,17 @@
 [ext_resource path="res://prefabs/characters/Wolf.tscn" type="PackedScene" id=8]
 [ext_resource path="res://prefabs/characters/TestEnemy02.tscn" type="PackedScene" id=9]
 [ext_resource path="res://prefabs/characters/Mother.tscn" type="PackedScene" id=10]
+[ext_resource path="res://prefabs/animals/Raccoon.tscn" type="PackedScene" id=11]
+[ext_resource path="res://prefabs/characters/WolfPeaceful.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 77.2809, 46.5633 )
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 104.342
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 86.9981
 
 [node name="TestTileWorld" type="Node2D"]
 
@@ -95,7 +103,27 @@ position = Vector2( 1191.17, 163.747 )
 [node name="Character4" parent="GameObjects" instance=ExtResource( 10 )]
 position = Vector2( 424.814, 178.661 )
 
-[node name="Character" parent="." instance=ExtResource( 3 )]
+[node name="Character5" parent="GameObjects" instance=ExtResource( 3 )]
 position = Vector2( 503.546, 146.494 )
 
+[node name="PeacefulWerewolf" parent="GameObjects" instance=ExtResource( 12 )]
+position = Vector2( 489.234, -90.3574 )
+
+[node name="TestArea2D" type="Area2D" parent="GameObjects/PeacefulWerewolf"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameObjects/PeacefulWerewolf/TestArea2D"]
+shape = SubResource( 3 )
+
+[node name="Raccoon2" parent="GameObjects" instance=ExtResource( 11 )]
+position = Vector2( 609.103, 452.796 )
+
+[node name="Area2D" type="Area2D" parent="GameObjects/Raccoon2"]
+position = Vector2( 24.8529, -564.137 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameObjects/Raccoon2/Area2D"]
+position = Vector2( -23.7955, 568.398 )
+shape = SubResource( 2 )
+
 [connection signal="area_entered" from="GameObjects/Area2D" to="GameObjects/Area2D" method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="GameObjects/PeacefulWerewolf/TestArea2D" to="GameObjects/PeacefulWerewolf" method="_on_TestArea2D_area_entered"]
+[connection signal="area_entered" from="GameObjects/Raccoon2/Area2D" to="GameObjects/Raccoon2" method="_on_Area2D_area_entered"]

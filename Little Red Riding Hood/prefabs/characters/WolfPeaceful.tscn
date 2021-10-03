@@ -24,11 +24,10 @@ radius = 300.0
 
 [node name="Character" type="KinematicBody2D"]
 script = ExtResource( 2 )
-team = 3
+team = 2
 can_attack = true
 attack_name = "SlashRegular"
 weapon_damage = 19
-enemy_teams = [ 1, 2 ]
 char_control = 2
 health = 200
 health_max = 200
