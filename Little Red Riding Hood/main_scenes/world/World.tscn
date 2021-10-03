@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://main_scenes/world_chunks/start_location/StartLocation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefabs/characters/LRRH.tscn" type="PackedScene" id=2]
@@ -24,6 +24,11 @@
 [ext_resource path="res://test_scenes/Side_2.tscn" type="PackedScene" id=22]
 [ext_resource path="res://test_scenes/Side_1.tscn" type="PackedScene" id=23]
 [ext_resource path="res://test_scenes/Side_4.tscn" type="PackedScene" id=24]
+[ext_resource path="res://main_scenes/world_chunks/wolfen_forest2/WolfenForest2.tscn" type="PackedScene" id=25]
+[ext_resource path="res://main_scenes/world_chunks/top_forest1/TopForest_01.tscn" type="PackedScene" id=26]
+[ext_resource path="res://main_scenes/world_chunks/top_forest2/TopForest_02.tscn" type="PackedScene" id=27]
+[ext_resource path="res://main_scenes/world_chunks/wolf_forest3/WolfForest3.tscn" type="PackedScene" id=28]
+[ext_resource path="res://main_scenes/world/Grimdark.gd" type="Script" id=29]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -107,11 +112,8 @@ position = Vector2( -2048, -608 )
 [node name="TileBlock17" parent="Blocks" instance=ExtResource( 23 )]
 position = Vector2( -2048, -1216 )
 
-[node name="TileBlock18" parent="Blocks" instance=ExtResource( 14 )]
+[node name="TileBlock18" parent="Blocks" instance=ExtResource( 26 )]
 position = Vector2( -1024, -1824 )
-
-[node name="TileBlock19" parent="Blocks" instance=ExtResource( 16 )]
-position = Vector2( 0, -1824 )
 
 [node name="TileBlock20" parent="Blocks" instance=ExtResource( 17 )]
 position = Vector2( 1024, -1824 )
@@ -139,6 +141,15 @@ position = Vector2( 2048, -1216 )
 
 [node name="TileBlock9" parent="Blocks" instance=ExtResource( 12 )]
 position = Vector2( 1024, 608 )
+
+[node name="TileBlock28" parent="Blocks" instance=ExtResource( 25 )]
+position = Vector2( -1024, -1216 )
+
+[node name="TileBlock19" parent="Blocks" instance=ExtResource( 27 )]
+position = Vector2( 0, -1824 )
+
+[node name="TileBlock29" parent="Blocks" instance=ExtResource( 28 )]
+position = Vector2( 1024, -1216 )
 
 [node name="GameObjects" type="YSort" parent="."]
 
@@ -170,6 +181,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 13 )
 expand = true
+script = ExtResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

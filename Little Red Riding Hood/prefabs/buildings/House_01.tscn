@@ -12,24 +12,26 @@ script = ExtResource( 2 )
 [node name="House" type="Sprite" parent="."]
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
+offset = Vector2( 0, -64 )
 region_enabled = true
 region_rect = Rect2( 48, 16, 144, 168 )
 
 [node name="RoofBlue" type="Sprite" parent="House"]
-visible = false
 position = Vector2( 0, -40 )
 texture = ExtResource( 1 )
+offset = Vector2( 0, -64 )
 region_enabled = true
 region_rect = Rect2( 248, 696, 128, 72 )
 
 [node name="RoofGreen" type="Sprite" parent="House"]
-visible = false
 position = Vector2( 0, -40 )
 texture = ExtResource( 1 )
+offset = Vector2( 0, -64 )
 region_enabled = true
 region_rect = Rect2( 632, 24, 128, 72 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 0, -56 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( -0.159134, 20.1203 )
