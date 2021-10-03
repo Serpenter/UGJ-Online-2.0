@@ -330,7 +330,6 @@ scale = Vector2( 0.48, 0.48 )
 
 [node name="TreePine91" parent="Scene/GameObjects" instance=ExtResource( 2 )]
 position = Vector2( 140.019, -149.204 )
-scale = Vector2( 1, 1 )
 
 [node name="TreePine24" parent="Scene/GameObjects" instance=ExtResource( 2 )]
 position = Vector2( 339.627, -145.063 )
@@ -482,15 +481,12 @@ scale = Vector2( 0.700002, 0.655998 )
 
 [node name="TreePine187" parent="Scene/GameObjects" instance=ExtResource( 2 )]
 position = Vector2( 162.745, 28.288 )
-scale = Vector2( 1, 1 )
 
 [node name="TreePine188" parent="Scene/GameObjects" instance=ExtResource( 2 )]
 position = Vector2( 124.759, 54.0693 )
-scale = Vector2( 1, 1 )
 
 [node name="TreePine189" parent="Scene/GameObjects" instance=ExtResource( 2 )]
 position = Vector2( 254.731, 38.9349 )
-scale = Vector2( 1, 1 )
 
 [node name="TreePine182" parent="Scene/GameObjects" instance=ExtResource( 2 )]
 position = Vector2( 429.777, 2.85693 )
@@ -804,6 +800,7 @@ position = Vector2( 586.411, -455.023 )
 position = Vector2( 837.98, -499.023 )
 
 [node name="ActiveArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 32
 collision_mask = 32
 

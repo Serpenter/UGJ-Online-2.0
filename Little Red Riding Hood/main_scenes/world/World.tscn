@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://main_scenes/world_chunks/start_location/StartLocation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefabs/characters/LRRH.tscn" type="PackedScene" id=2]
@@ -12,6 +12,43 @@
 [ext_resource path="res://main_scenes/world_chunks/grandmas_house/GrandmasHouse.tscn" type="PackedScene" id=10]
 [ext_resource path="res://main_scenes/world_chunks/duck_lake_left/DuckLakeLeft.tscn" type="PackedScene" id=11]
 [ext_resource path="res://main_scenes/world_chunks/lake_house/LakeHouse.tscn" type="PackedScene" id=12]
+[ext_resource path="res://common_assets/images/white.png" type="Texture" id=13]
+[ext_resource path="res://test_scenes/BottomTop_3.tscn" type="PackedScene" id=14]
+[ext_resource path="res://test_scenes/Corner_SW.tscn" type="PackedScene" id=15]
+[ext_resource path="res://test_scenes/BottomTop_2.tscn" type="PackedScene" id=16]
+[ext_resource path="res://test_scenes/BottomTop_1.tscn" type="PackedScene" id=17]
+[ext_resource path="res://test_scenes/CornerNE.tscn" type="PackedScene" id=18]
+[ext_resource path="res://test_scenes/CornerNW.tscn" type="PackedScene" id=19]
+[ext_resource path="res://test_scenes/Side_3.tscn" type="PackedScene" id=20]
+[ext_resource path="res://test_scenes/Corner_SE.tscn" type="PackedScene" id=21]
+[ext_resource path="res://test_scenes/Side_2.tscn" type="PackedScene" id=22]
+[ext_resource path="res://test_scenes/Side_1.tscn" type="PackedScene" id=23]
+[ext_resource path="res://test_scenes/Side_4.tscn" type="PackedScene" id=24]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float brightness = 0.8;
+uniform float contrast = 1.5;
+uniform float saturation = 1.8;
+
+void fragment() {
+	vec3 c = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0).rgb;
+
+	c.rgb = mix(vec3(0.0), c.rgb, brightness);
+	c.rgb = mix(vec3(0.5), c.rgb, contrast);
+	c.rgb = mix(vec3(dot(vec3(1.0), c.rgb) * 0.33333), c.rgb, saturation);
+
+	COLOR.rgb = c;
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/brightness = 1.0
+shader_param/contrast = 1.0
+shader_param/saturation = 1.1
 
 [node name="World" type="YSort"]
 
@@ -36,7 +73,7 @@ position = Vector2( 1024, 0 )
 position = Vector2( 0, 608 )
 
 [node name="TileBlock5" parent="Blocks" instance=ExtResource( 8 )]
-position = Vector2( 1024, 608 )
+position = Vector2( 0, -1216 )
 
 [node name="TileBlock6" parent="Blocks" instance=ExtResource( 10 )]
 position = Vector2( 0, -608 )
@@ -46,8 +83,62 @@ position = Vector2( 1024, -608 )
 
 [node name="TileBlock8" parent="Blocks" instance=ExtResource( 11 )]
 
+[node name="TileBlock10" parent="Blocks" instance=ExtResource( 18 )]
+position = Vector2( 2048, -1824 )
+
+[node name="TileBlock11" parent="Blocks" instance=ExtResource( 19 )]
+position = Vector2( -2048, -1824 )
+
+[node name="TileBlock12" parent="Blocks" instance=ExtResource( 21 )]
+position = Vector2( 2048, 1216 )
+
+[node name="TileBlock13" parent="Blocks" instance=ExtResource( 15 )]
+position = Vector2( -2048, 1216 )
+
+[node name="TileBlock14" parent="Blocks" instance=ExtResource( 23 )]
+position = Vector2( -2048, 608 )
+
+[node name="TileBlock15" parent="Blocks" instance=ExtResource( 22 )]
+position = Vector2( -2048, 0 )
+
+[node name="TileBlock16" parent="Blocks" instance=ExtResource( 20 )]
+position = Vector2( -2048, -608 )
+
+[node name="TileBlock17" parent="Blocks" instance=ExtResource( 23 )]
+position = Vector2( -2048, -1216 )
+
+[node name="TileBlock18" parent="Blocks" instance=ExtResource( 14 )]
+position = Vector2( -1024, -1824 )
+
+[node name="TileBlock19" parent="Blocks" instance=ExtResource( 16 )]
+position = Vector2( 0, -1824 )
+
+[node name="TileBlock20" parent="Blocks" instance=ExtResource( 17 )]
+position = Vector2( 1024, -1824 )
+
+[node name="TileBlock21" parent="Blocks" instance=ExtResource( 17 )]
+position = Vector2( -1024, 1216 )
+
+[node name="TileBlock22" parent="Blocks" instance=ExtResource( 16 )]
+position = Vector2( 0, 1216 )
+
+[node name="TileBlock23" parent="Blocks" instance=ExtResource( 14 )]
+position = Vector2( 1024, 1216 )
+
+[node name="TileBlock24" parent="Blocks" instance=ExtResource( 24 )]
+position = Vector2( 2048, 608 )
+
+[node name="TileBlock25" parent="Blocks" instance=ExtResource( 22 )]
+position = Vector2( 2048, 0 )
+
+[node name="TileBlock26" parent="Blocks" instance=ExtResource( 20 )]
+position = Vector2( 2048, -608 )
+
+[node name="TileBlock27" parent="Blocks" instance=ExtResource( 23 )]
+position = Vector2( 2048, -1216 )
+
 [node name="TileBlock9" parent="Blocks" instance=ExtResource( 12 )]
-position = Vector2( 0, -1216 )
+position = Vector2( 1024, 608 )
 
 [node name="GameObjects" type="YSort" parent="."]
 
@@ -63,3 +154,22 @@ drag_margin_left = 0.08
 drag_margin_top = 0.08
 drag_margin_right = 0.08
 drag_margin_bottom = 0.08
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grimdark" type="TextureRect" parent="CanvasLayer/Control"]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
