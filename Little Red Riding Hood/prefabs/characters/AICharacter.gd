@@ -10,8 +10,6 @@ enum AI_STATE {
 
 
 var ai_state = AI_STATE.WAIT
-var target = null
-var target_weakref
 var attack_everything = false
 
 # Called when the node enters the scene tree for the first time.
@@ -32,10 +30,15 @@ func _process(delta):
     process_ai_actions(delta)
     
 func _on_attack_zone_entered(area, zone_direction):
+    if char_control != CHARACTER_CONTROL.AI:
+        return
+
     if ai_state != AI_STATE.ATTACK_TARGET:
         return
     
-    if not target:
+    if not target or not target.get_team() in enemy_teams:
+        target = null
+        ai_state = AI_STATE.WAIT
         return
         
     if not current_state == CHARACTER_STATE.WALK and not current_state == CHARACTER_STATE.IDLE:
@@ -67,10 +70,11 @@ func _on_detection_area_entered(area):
 
             if owner.has_method("get_team") and owner.get_team() in enemy_teams:
                 target = owner
-                target_weakref = weakref(target)
                 ai_state = AI_STATE.ATTACK_TARGET
             
 func process_ai_actions(_delta):
+    if char_control != CHARACTER_CONTROL.AI:
+        return
     if ai_state == AI_STATE.WAIT:
         return
         
@@ -84,6 +88,8 @@ func process_ai_actions(_delta):
 #    pass
 
 func resolve_follow_target(_delta):
+    if char_control != CHARACTER_CONTROL.AI:
+        return
     motion = Vector2()
     
     if not current_state == CHARACTER_STATE.WALK and not current_state == CHARACTER_STATE.IDLE:

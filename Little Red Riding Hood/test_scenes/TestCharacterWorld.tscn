@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://main_scenes/world/tile_assets/TestTileWorld.tres" type="TileSet" id=1]
 [ext_resource path="res://prefabs/trees/TreeLeaf.tscn" type="PackedScene" id=2]
-[ext_resource path="res://prefabs/characters/TestEnemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://prefabs/characters/TestEnemy02.tscn" type="PackedScene" id=3]
 [ext_resource path="res://prefabs/characters/LRRH.tscn" type="PackedScene" id=4]
 [ext_resource path="res://prefabs/particles/ParticleManager.gd" type="Script" id=5]
+[ext_resource path="res://prefabs/animals/BirdWhiteCrest.tscn" type="PackedScene" id=6]
 
 [node name="TestTileWorld" type="Node2D"]
 
@@ -25,8 +26,32 @@ tile_data = PoolIntArray( 21, 0, 131072, 22, 0, 131073, 23, 0, 131073, 24, 0, 13
 
 [node name="GameObjects" type="YSort" parent="."]
 
-[node name="Character2" parent="GameObjects" instance=ExtResource( 3 )]
-position = Vector2( 1076.85, 167.668 )
+[node name="Bird" parent="GameObjects" instance=ExtResource( 6 )]
+position = Vector2( 330.514, 141.818 )
+
+[node name="Bird2" parent="GameObjects" instance=ExtResource( 6 )]
+position = Vector2( 475.73, 328.907 )
+
+[node name="Bird3" parent="GameObjects" instance=ExtResource( 6 )]
+position = Vector2( 488.203, 242.49 )
+
+[node name="Bird4" parent="GameObjects" instance=ExtResource( 6 )]
+position = Vector2( 597.783, 337.816 )
+
+[node name="Bird5" parent="GameObjects" instance=ExtResource( 6 )]
+position = Vector2( 586.202, 231.799 )
+
+[node name="Bird6" parent="GameObjects" instance=ExtResource( 6 )]
+position = Vector2( 792.89, 172.999 )
+
+[node name="Bird7" parent="GameObjects" instance=ExtResource( 6 )]
+position = Vector2( 743, 169.436 )
+
+[node name="Bird8" parent="GameObjects" instance=ExtResource( 6 )]
+position = Vector2( 702.018, 166.763 )
+
+[node name="Bird9" parent="GameObjects" instance=ExtResource( 6 )]
+position = Vector2( 1057.49, 130.236 )
 
 [node name="Character" parent="GameObjects" instance=ExtResource( 4 )]
 position = Vector2( 523.85, 298.264 )
@@ -45,3 +70,6 @@ position = Vector2( 578.425, 249.606 )
 
 [node name="TreeLeaf" parent="GameObjects" instance=ExtResource( 2 )]
 position = Vector2( 190.931, 247.484 )
+
+[node name="Character2" parent="GameObjects" instance=ExtResource( 3 )]
+position = Vector2( 1084.21, 137.363 )
