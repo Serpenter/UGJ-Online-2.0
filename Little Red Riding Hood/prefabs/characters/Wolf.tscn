@@ -6,20 +6,20 @@
 [ext_resource path="res://prefabs/characters/Healthbar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://prefabs/characters/character_sprites/swordsman_advanced.png" type="Texture" id=5]
 
-[sub_resource type="CapsuleShape2D" id=82]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 12.2063
 height = 0.0
 
-[sub_resource type="CircleShape2D" id=83]
+[sub_resource type="CircleShape2D" id=2]
 radius = 150.0
 
-[sub_resource type="CircleShape2D" id=84]
+[sub_resource type="CircleShape2D" id=3]
 radius = 28.2974
 
-[sub_resource type="CapsuleShape2D" id=85]
+[sub_resource type="CapsuleShape2D" id=4]
 height = 30.7268
 
-[sub_resource type="CircleShape2D" id=86]
+[sub_resource type="CircleShape2D" id=5]
 radius = 300.0
 
 [node name="Character" type="KinematicBody2D"]
@@ -28,6 +28,7 @@ can_attack = true
 attack_name = "SlashRegular"
 weapon_damage = 19
 enemy_teams = [ 1, 2 ]
+char_control = 2
 health = 200
 health_max = 200
 
@@ -47,35 +48,35 @@ sprite_adv = ExtResource( 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, -9 )
-shape = SubResource( 82 )
+shape = SubResource( 1 )
 
 [node name="DetectionArea" type="Area2D" parent="."]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 visible = false
-shape = SubResource( 83 )
+shape = SubResource( 2 )
 
 [node name="EventArea" type="Area2D" parent="."]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EventArea"]
 visible = false
-shape = SubResource( 83 )
+shape = SubResource( 2 )
 
 [node name="AlertArea" type="Area2D" parent="."]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AlertArea"]
 visible = false
-shape = SubResource( 83 )
+shape = SubResource( 2 )
 
 [node name="PursueArea" type="Area2D" parent="."]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PursueArea"]
 visible = false
-shape = SubResource( 83 )
+shape = SubResource( 2 )
 
 [node name="ActiveRange" type="Area2D" parent="."]
 visible = false
@@ -86,7 +87,7 @@ collision_mask = 32
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActiveRange"]
 visible = false
 position = Vector2( 0, -5 )
-shape = SubResource( 84 )
+shape = SubResource( 3 )
 
 [node name="CharacterArea" type="Area2D" parent="." groups=[
 "character_area",
@@ -96,14 +97,14 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterArea"]
 visible = false
 position = Vector2( 1.40309, -23.5717 )
-shape = SubResource( 85 )
+shape = SubResource( 4 )
 
 [node name="EnemyCheckArea" type="Area2D" parent="."]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCheckArea"]
 visible = false
-shape = SubResource( 86 )
+shape = SubResource( 5 )
 
 [connection signal="health_changed" from="." to="HealthBar" method="_on_Character_health_changed"]
 [connection signal="max_health_changed" from="." to="HealthBar" method="_on_Character_max_health_changed"]

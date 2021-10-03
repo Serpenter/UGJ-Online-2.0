@@ -230,7 +230,7 @@ func die():
     team = CHARACTER_TEAM.WORLD
     char_control = CHARACTER_CONTROL.NONE
     collision_shape.disabled = true
-    
+    $"/root/GGrimdarkControl".grimdark_level = 0.9
 #    if char_control != CHARACTER_CONTROL.PLAYER:
 #        queue_free()
 #    else:

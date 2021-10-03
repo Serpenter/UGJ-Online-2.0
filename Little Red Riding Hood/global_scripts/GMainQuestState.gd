@@ -1,6 +1,9 @@
 extends Node
 #Main Quest states
 
+var character_node = null
+var wolf_node = null
+
 enum QuestState {
     NotTaken,
     Taken,

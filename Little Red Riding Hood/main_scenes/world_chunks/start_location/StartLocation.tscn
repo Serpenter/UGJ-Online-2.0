@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://prefabs/decorations/lawn_flowers/LawnFlower_05.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefabs/decorations/flower_box/FlowerBox_04.tscn" type="PackedScene" id=2]
@@ -24,7 +24,9 @@
 [ext_resource path="res://prefabs/decorations/signs/Sign.tscn" type="PackedScene" id=22]
 [ext_resource path="res://main_scenes/world_chunks/start_location/Mother.gd" type="Script" id=23]
 [ext_resource path="res://main_scenes/world_chunks/start_location/SpecialPie.gd" type="Script" id=24]
+[ext_resource path="res://prefabs/characters/Mother.tscn" type="PackedScene" id=25]
 [ext_resource path="res://prefabs/quest_utils/TextSign.tscn" type="PackedScene" id=26]
+[ext_resource path="res://prefabs/characters/Mother.gd" type="Script" id=27]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 41.8718
@@ -247,11 +249,12 @@ position = Vector2( 300.872, -544.545 )
 [node name="LawnFlower17" parent="Scene/GameObjects/RegularDecor" instance=ExtResource( 1 )]
 position = Vector2( 145.086, -558.816 )
 
-[node name="Mother" parent="Scene/GameObjects" instance=ExtResource( 22 )]
-position = Vector2( 251.586, -256.683 )
-script = ExtResource( 23 )
+[node name="Mother" parent="Scene/GameObjects" instance=ExtResource( 25 )]
+position = Vector2( 246.216, -239.845 )
+script = ExtResource( 27 )
 
 [node name="Area2D" type="Area2D" parent="Scene/GameObjects/Mother"]
+position = Vector2( 3.14355, -18.3922 )
 collision_layer = 64
 collision_mask = 64
 
@@ -259,13 +262,18 @@ collision_mask = 64
 shape = SubResource( 4 )
 
 [node name="PhrasePlayer" parent="Scene/GameObjects/Mother" instance=ExtResource( 17 )]
-position = Vector2( -124.417, -56.0665 )
+position = Vector2( -95.464, -69.1554 )
 phrases = [ "Go, my dear, and see how your grandmother is doing,", "for I hear she has been very ill.", "Take her a cake, and this little pot of butter.\" " ]
 visible_time = 5
 autoplay_interval = 3
 
 [node name="SayTimer" type="Timer" parent="Scene/GameObjects/Mother"]
 one_shot = true
+
+[node name="mo2" parent="Scene/GameObjects" instance=ExtResource( 22 )]
+visible = false
+position = Vector2( 251.586, -256.683 )
+script = ExtResource( 23 )
 
 [node name="Sign" parent="Scene/GameObjects" instance=ExtResource( 22 )]
 position = Vector2( 407.113, -573.692 )
@@ -291,6 +299,7 @@ shape = SubResource( 5 )
 [connection signal="timeout" from="Scene/GameObjects/Trunk/Pie/VanishTimeout" to="Scene/GameObjects/Trunk/Pie" method="_on_VanishTimeout_timeout"]
 [connection signal="area_shape_entered" from="Scene/GameObjects/Mother/Area2D" to="Scene/GameObjects/Mother" method="_on_Area2D_area_shape_entered"]
 [connection signal="area_shape_exited" from="Scene/GameObjects/Mother/Area2D" to="Scene/GameObjects/Mother" method="_on_Area2D_area_shape_exited"]
+[connection signal="plot_finished" from="Scene/GameObjects/Mother/PhrasePlayer" to="Scene/GameObjects/Mother" method="_on_PhrasePlayer_plot_finished"]
 [connection signal="timeout" from="Scene/GameObjects/Mother/SayTimer" to="Scene/GameObjects/Mother" method="_on_SayTimer_timeout"]
 [connection signal="area_shape_entered" from="ActiveArea" to="." method="_on_ActiveArea_area_shape_entered"]
 [connection signal="area_shape_exited" from="ActiveArea" to="." method="_on_ActiveArea_area_shape_exited"]

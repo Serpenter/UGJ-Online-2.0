@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://main_scenes/world_chunks/start_location/StartLocation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefabs/characters/LRRH.tscn" type="PackedScene" id=2]
@@ -29,6 +29,9 @@
 [ext_resource path="res://main_scenes/world_chunks/top_forest2/TopForest_02.tscn" type="PackedScene" id=27]
 [ext_resource path="res://main_scenes/world_chunks/wolf_forest3/WolfForest3.tscn" type="PackedScene" id=28]
 [ext_resource path="res://main_scenes/world/Grimdark.gd" type="Script" id=29]
+[ext_resource path="res://main_scenes/world/GameObjects.gd" type="Script" id=30]
+[ext_resource path="res://prefabs/quest_utils/PhrasePlayer.tscn" type="PackedScene" id=31]
+[ext_resource path="res://main_scenes/world/HUD.gd" type="Script" id=32]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -54,6 +57,22 @@ shader = SubResource( 1 )
 shader_param/brightness = 1.0
 shader_param/contrast = 1.0
 shader_param/saturation = 1.1
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.027451, 0.784314, 0.466667, 0.243137 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.47451, 0.894118, 0.0117647, 0.352941 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.109804, 0.729412, 1, 0.286275 )
+
+[sub_resource type="DynamicFontData" id=6]
+font_path = "res://resources/dpcomic.ttf"
+
+[sub_resource type="DynamicFont" id=7]
+size = 12
+font_data = SubResource( 6 )
 
 [node name="World" type="YSort"]
 
@@ -152,6 +171,7 @@ position = Vector2( 0, -1824 )
 position = Vector2( 1024, -1216 )
 
 [node name="GameObjects" type="YSort" parent="."]
+script = ExtResource( 30 )
 
 [node name="Character" parent="GameObjects" instance=ExtResource( 2 )]
 position = Vector2( -772.692, 1099.84 )
@@ -165,6 +185,9 @@ drag_margin_left = 0.08
 drag_margin_top = 0.08
 drag_margin_right = 0.08
 drag_margin_bottom = 0.08
+
+[node name="PhrasePlayer" parent="GameObjects/Character" instance=ExtResource( 31 )]
+position = Vector2( -91.179, -68.2974 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -185,3 +208,58 @@ script = ExtResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Tween" type="Tween" parent="CanvasLayer/Control/Grimdark"]
+
+[node name="HUD" type="MarginContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/HUD"]
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="Control" type="Control" parent="CanvasLayer/HUD/HBoxContainer"]
+margin_right = 435.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="Control2" type="Control" parent="CanvasLayer/HUD/HBoxContainer"]
+margin_left = 439.0
+margin_right = 874.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HUD/HBoxContainer"]
+margin_left = 878.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="CanvasLayer/HUD/HBoxContainer/VBoxContainer"]
+margin_right = 146.0
+margin_bottom = 12.0
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
+text = "Exit"
+flat = true
+
+[node name="Endgame" type="MarginContainer" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="tween_all_completed" from="CanvasLayer/Control/Grimdark/Tween" to="CanvasLayer/Control/Grimdark" method="_on_Tween_tween_all_completed"]
+[connection signal="pressed" from="CanvasLayer/HUD/HBoxContainer/VBoxContainer/Button" to="CanvasLayer/HUD" method="_on_Button_pressed"]

@@ -1,17 +1,24 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://main_scenes/world/tile_assets/TestTileWorld.tres" type="TileSet" id=1]
 [ext_resource path="res://prefabs/trees/TreeLeaf.tscn" type="PackedScene" id=2]
+[ext_resource path="res://prefabs/characters/Wolf.tscn" type="PackedScene" id=3]
+[ext_resource path="res://prefabs/quest_utils/PhrasePlayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://prefabs/decorations/lawn_flowers/LawnFlower_04.tscn" type="PackedScene" id=5]
 [ext_resource path="res://prefabs/trees/TreePine.tscn" type="PackedScene" id=6]
 [ext_resource path="res://prefabs/decorations/lawn_flowers/LawnFlower_07.tscn" type="PackedScene" id=7]
 [ext_resource path="res://prefabs/decorations/lawn_flowers/LawnFlower_06.tscn" type="PackedScene" id=8]
 [ext_resource path="res://main_scenes/world_chunks/wolfen_forest/WolfenForest.gd" type="Script" id=9]
+[ext_resource path="res://main_scenes/world_chunks/wolfen_forest/WolfPlotController.gd" type="Script" id=10]
+[ext_resource path="res://prefabs/quest_utils/TextSign.tscn" type="PackedScene" id=11]
 [ext_resource path="res://prefabs/obstacles/stones/Stone_03.tscn" type="PackedScene" id=12]
 [ext_resource path="res://prefabs/obstacles/stones/Stone_02.tscn" type="PackedScene" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1024, 600 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 64.0
 
 [node name="TileBlock" type="YSort"]
 script = ExtResource( 9 )
@@ -326,5 +333,36 @@ scale = Vector2( 1, 1 )
 [node name="LawnFlower20" parent="Scene/GameObjects" instance=ExtResource( 5 )]
 position = Vector2( 565.363, 565.344 )
 
+[node name="Wolf" parent="Scene/GameObjects" instance=ExtResource( 3 )]
+position = Vector2( 552.647, 287.824 )
+MOTION_SPEED = 0
+can_attack = false
+char_control = 3
+
+[node name="WolfPlotController" type="Node2D" parent="Scene/GameObjects/Wolf"]
+script = ExtResource( 10 )
+
+[node name="PhrasePlayer" parent="Scene/GameObjects/Wolf/WolfPlotController" instance=ExtResource( 4 )]
+position = Vector2( -57, -69 )
+
+[node name="Area2D" type="Area2D" parent="Scene/GameObjects/Wolf/WolfPlotController"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scene/GameObjects/Wolf/WolfPlotController/Area2D"]
+shape = SubResource( 2 )
+
+[node name="UnboundTimer" type="Timer" parent="Scene/GameObjects/Wolf/WolfPlotController"]
+wait_time = 6.0
+
+[node name="TextSign" parent="Scene/GameObjects/Wolf/WolfPlotController" instance=ExtResource( 11 )]
+position = Vector2( -13.5, -44 )
+phrase_enter = "Come closer! I will not harm you. Now."
+is_active = true
+one_shot = true
+radius = 140
+
 [connection signal="area_shape_entered" from="ActiveArea" to="." method="_on_ActiveArea_area_shape_entered"]
 [connection signal="area_shape_exited" from="ActiveArea" to="." method="_on_ActiveArea_area_shape_exited"]
+[connection signal="area_shape_entered" from="Scene/GameObjects/Wolf/WolfPlotController/Area2D" to="Scene/GameObjects/Wolf/WolfPlotController" method="_on_Area2D_area_shape_entered"]
+[connection signal="timeout" from="Scene/GameObjects/Wolf/WolfPlotController/UnboundTimer" to="Scene/GameObjects/Wolf/WolfPlotController" method="_on_UnboundTimer_timeout"]

@@ -1,3 +1,4 @@
+tool
 extends Node2D
 
 
@@ -7,6 +8,7 @@ export var phrase_exit = ""
 export var is_active = false
 export var one_shot = false
 export var say_delay = 1
+export var radius = 64 setget _on_rad_set
 
 var is_shot = false
 var is_said = false
@@ -36,3 +38,8 @@ func _on_Area2D_area_shape_exited(area_id, area, area_shape, local_shape):
 func _on_SayTimer_timeout():
     is_said = false
     $SayTimer.wait_time = say_delay
+
+
+func _on_rad_set(new_rad):
+    radius = new_rad
+    $Area2D/CollisionShape2D.shape.radius = new_rad

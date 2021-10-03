@@ -13,7 +13,7 @@ func _on_Button_pressed(scene_to_load):
 
 
 func _on_FadeIn_fade_finished():
-    get_tree().change_scene(scene_to_path_load)
+    $"/root/GSceneManager".goto_scene_wloader(scene_to_path_load)
     
 
 func _on_MenuButton_pressed():
