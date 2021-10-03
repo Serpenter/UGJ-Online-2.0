@@ -7,10 +7,10 @@
 [sub_resource type="CircleShape2D" id=1]
 
 [node name="TreeLeaf" type="Node2D"]
-position = Vector2( 0, -13 )
 script = ExtResource( 1 )
 
 [node name="Trunk" type="Sprite" parent="."]
+position = Vector2( 0, -9 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 96, 96 )
@@ -22,7 +22,7 @@ position = Vector2( 0, 5.05107 )
 shape = SubResource( 1 )
 
 [node name="Leaf" type="Sprite" parent="."]
-position = Vector2( 0, -70 )
+position = Vector2( 0, -79 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 96, 96 )

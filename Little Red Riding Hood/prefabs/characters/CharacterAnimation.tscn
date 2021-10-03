@@ -1439,19 +1439,19 @@ graph_offset = Vector2( 10, 4.66516 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=75]
 
-[sub_resource type="RectangleShape2D" id=77]
+[sub_resource type="RectangleShape2D" id=76]
 extents = Vector2( 20.6231, 9.07853 )
 
-[sub_resource type="RectangleShape2D" id=78]
+[sub_resource type="RectangleShape2D" id=77]
 extents = Vector2( 18.6922, 10 )
 
-[sub_resource type="RectangleShape2D" id=79]
+[sub_resource type="RectangleShape2D" id=78]
 extents = Vector2( 16.6544, 10 )
 
-[sub_resource type="RectangleShape2D" id=80]
+[sub_resource type="RectangleShape2D" id=79]
 extents = Vector2( 17.1574, 10 )
 
-[sub_resource type="RectangleShape2D" id=76]
+[sub_resource type="RectangleShape2D" id=80]
 extents = Vector2( 36.8647, 12.8273 )
 
 [node name="CharacterAnimation" type="Node2D"]
@@ -1516,7 +1516,7 @@ script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/AttackZoneUp"]
 position = Vector2( 1.18921, -45.5135 )
-shape = SubResource( 77 )
+shape = SubResource( 76 )
 
 [node name="AttackZoneDown" type="Area2D" parent="AttackZone"]
 visible = false
@@ -1525,7 +1525,7 @@ script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/AttackZoneDown"]
 position = Vector2( 1.93095, -5.13582 )
-shape = SubResource( 78 )
+shape = SubResource( 77 )
 
 [node name="AttackZoneRight" type="Area2D" parent="AttackZone"]
 visible = false
@@ -1534,7 +1534,7 @@ script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/AttackZoneRight"]
 position = Vector2( 34.8881, -25.4683 )
-shape = SubResource( 79 )
+shape = SubResource( 78 )
 
 [node name="AttackZoneLeft" type="Area2D" parent="AttackZone"]
 visible = false
@@ -1544,7 +1544,7 @@ script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/AttackZoneLeft"]
 position = Vector2( -31.9131, -25.3201 )
-shape = SubResource( 80 )
+shape = SubResource( 79 )
 
 [node name="DamageZoneUp" type="Area2D" parent="AttackZone"]
 visible = false
@@ -1554,7 +1554,7 @@ script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/DamageZoneUp"]
 position = Vector2( 0, -47 )
-shape = SubResource( 76 )
+shape = SubResource( 80 )
 
 [node name="DamageZoneDown" type="Area2D" parent="AttackZone"]
 visible = false
@@ -1565,7 +1565,7 @@ can_damage = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/DamageZoneDown"]
 position = Vector2( 1.33635, 1.99943 )
-shape = SubResource( 76 )
+shape = SubResource( 80 )
 
 [node name="DamageZoneRight" type="Area2D" parent="AttackZone"]
 visible = false
@@ -1576,7 +1576,7 @@ can_damage = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/DamageZoneRight"]
 position = Vector2( 39.645, -26.9548 )
-shape = SubResource( 76 )
+shape = SubResource( 80 )
 
 [node name="DamageZoneLeft" type="Area2D" parent="AttackZone"]
 visible = false
@@ -1587,4 +1587,4 @@ can_damage = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/DamageZoneLeft"]
 position = Vector2( -41.4268, -26.5093 )
-shape = SubResource( 76 )
+shape = SubResource( 80 )
